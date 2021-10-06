@@ -1,7 +1,6 @@
 ---
 layout: post
-date: 2016-01-15 07:59:00-0400
+date: 2020-02-23 07:59:00-0400
 inline: true
 ---
-
-A simple inline announcement with Markdown emoji! :sparkles: :smile:
+One paper accepted at CVPR 2020: [DeepLPF: Deep Local Parametric Filters for Image Enhancement](https://openaccess.thecvf.com/content_CVPR_2020/html/Moran_DeepLPF_Deep_Local_Parametric_Filters_for_Image_Enhancement_CVPR_2020_paper.html)
