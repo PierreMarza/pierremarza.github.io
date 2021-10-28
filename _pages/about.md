@@ -25,7 +25,7 @@ I got my Master's degree from [INSA Lyon](https://www.insa-lyon.fr/en/), with a 
 
 **Reviewing experience**: TPAMI
 
-**My CV is available [here](/al-folio/assets/pdf/CV_Pierre_Marza.pdf)**
+**My CV is available [here](/assets/pdf/CV_Pierre_Marza.pdf)**
 
 <!-- Write your biography here. Tell the world about yourself. Link to your favorite [subreddit](http://reddit.com){:target="\_blank"}. You can put a picture in, too. The code is already in, just name your picture `photo_profil.jpg` and put it in the `img/` folder.
 
