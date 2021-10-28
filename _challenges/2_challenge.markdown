@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Huawei Deep Learning Experience
-description: 24h Hackathon targetting semi-supervised classification
+description: 24h Hackathon targetting semi-supervised image classification
 img: /assets/img/huawei_chall.png
 importance: 1
 category: Participant
