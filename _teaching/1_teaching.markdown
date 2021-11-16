@@ -9,7 +9,7 @@ category: 2021
 
 Lecture Materials available [here](https://perso.liris.cnrs.fr/christian.wolf/teaching/index.html) (Lectures taught by Christian Wolf).
 
-## [Introduction to Deep Learning - Part 1 (4h)](http://127.0.0.1:4000/teaching/1_teaching_tp1/)
+## [Introduction to Deep Learning - Part 1 (4h)](https://pierremarza.github.io/teaching/1_teaching_tp1/)
 
 <!-- ## [Introduction to Deep Learning - Part 2 (4h)](http://127.0.0.1:4000/teaching/1_teaching_tp1/)
 To be done. -->
