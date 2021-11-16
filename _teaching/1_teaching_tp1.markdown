@@ -91,7 +91,7 @@ It is important to visualise the data you will be working on. Moreover, when tra
 
 Start by **implementing 3 dataloaders** for your training, validation and test sets.
 
-{::options parse_block_html="true" /}
+<!-- {::options parse_block_html="true" /}
 <details><summary markdown="span">**A solution**</summary>
 ```python
 # Define you batch size
@@ -116,14 +116,14 @@ images, labels = dataiter.next()
 ```
 </details>
 <br/>
-{::options parse_block_html="false" /} 
+{::options parse_block_html="false" /}  -->
 
 Finally, write a function that takes a batch of image tensors as inputs and display them, along with their associated labels. You can use [**matplotlib.pyplot**](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.html) to do so.
 
 
 
 
-{::options parse_block_html="true" /}
+<!-- {::options parse_block_html="true" /}
 <details><summary markdown="span">**Solution 1 (from the [Pytorch Tutorial](https://pytorch.org/tutorials/beginner/blitz/cifar10_tutorial.html#sphx-glr-beginner-blitz-cifar10-tutorial-py)) with [tochvision.utils_make_grid](https://pytorch.org/vision/stable/utils.html#torchvision.utils.make_grid)**</summary>
 ```python
 def imshow(img):
@@ -138,9 +138,9 @@ print(' '.join('%5s' % classes[labels[j]] for j in range(batch_size)))
 ```
 </details>
 <br/>
-{::options parse_block_html="false" /} 
+{::options parse_block_html="false" /}  -->
 
-{::options parse_block_html="true" /}
+<!-- {::options parse_block_html="true" /}
 <details><summary markdown="span">**Solution 2**</summary>
 ```python
 def process_img(img):
@@ -167,14 +167,14 @@ imshow_batch(images, labels, classes)
 ```
 </details>
 <br/>
-{::options parse_block_html="false" /} 
+{::options parse_block_html="false" /}  -->
 
 
 ## Designing a Convolutional Neural Network
 It is now time to build a CNN! Write a class inheriting from [**torch.nn.Module**](https://pytorch.org/docs/stable/generated/torch.nn.Module.html). Be careful of the dimensions of input tensors and the dimensions of your desired output.
 Then, you can play with different hyperparameters, such as the number of layers, and hyperparameters of the [**torch.nn.Conv2d**](https://pytorch.org/docs/stable/generated/torch.nn.Conv2d.html) layer (number of output channels, kernel size, stride, padding, etc.)
 
-{::options parse_block_html="true" /}
+<!-- {::options parse_block_html="true" /}
 <details><summary markdown="span">**A solution**</summary>
 ```python
 import torch.nn.functional as F
@@ -207,7 +207,7 @@ print('out: ', out.shape)   # out:  torch.Size([4, 10])
 ```
 </details>
 <br/>
-{::options parse_block_html="false" /} 
+{::options parse_block_html="false" /}  -->
 
 ## Dimension of features maps in CNN
 It is important to understand the convolution operations going on inside your neural network.
@@ -215,7 +215,7 @@ It is important to understand the convolution operations going on inside your ne
 ### Formula
 You are given a parametrised convolutional layer, along with the dimensions of an input tensor (feature map). Write the formula that gives you the **dimensions of the output tensor**.
 
-{::options parse_block_html="true" /}
+<!-- {::options parse_block_html="true" /}
 <details><summary markdown="span">**A solution**</summary>
 Let's denote the size of input and output tensors along axis $x$ as $I_x$ and $O_x$, and the respective kernel size, padding and stride as $K_x$, $P_x$ and $S_x$.
 We have,
@@ -231,7 +231,7 @@ $$
 $$
 </details>
 <br/>
-{::options parse_block_html="false" /} 
+{::options parse_block_html="false" /}  -->
 
 <!-- ### Maxpooling Layer
 Do the same for a Maxpooling layer. -->
@@ -240,7 +240,7 @@ Do the same for a Maxpooling layer. -->
 ### Code
 Now, you can write a function that takes as input a tensor shape, as well as the hyperparameters of the layer and outputs the size of the output tensor. You can then check your function is correct by comparing its returned value with the real shapes of tensors within the forward pass of your neural network.
 
-{::options parse_block_html="true" /}
+<!-- {::options parse_block_html="true" /}
 <details><summary markdown="span">**A solution**</summary>
 ```python
 def compute_output_shape_conv(input_shape=torch.Size([4, 3, 32, 32]), kernel_size=(3, 3), stride=(1, 1), padding=(0, 0), n_out=20):
@@ -288,12 +288,12 @@ class LeNet(torch.nn.Module):
 ```
 </details>
 <br/>
-{::options parse_block_html="false" /} 
+{::options parse_block_html="false" /}  -->
 
 ## Loss function and optimizer
 The next step is to define a **loss function** that is suited to the problem you want to solve, in our case **multi-class classification**. Then you have to choose an **optimizer**. You are encouraged to try different ones to compare them. You can also study the impact of different hyperparameters of the optimizer (learning rate, momentum, etc.)
 
-{::options parse_block_html="true" /}
+<!-- {::options parse_block_html="true" /}
 <details><summary markdown="span">**A solution**</summary>
 ```python
 import torch.optim as optim
@@ -303,13 +303,13 @@ optimizer = optim.SGD(model.parameters(), lr=0.001, momentum=0.9)
 ```
 </details>
 <br/>
-{::options parse_block_html="false" /} 
+{::options parse_block_html="false" /}  -->
 
 ## Training loop
 It is now to time to write the code for **training and validating your model**. You must iterate through your training data using your dataloader, and compute forward and backward passes on given data batches.
 Don't forget to log your training as well as validation losses (the latter is mainly used to tune hyperparameters).
 
-{::options parse_block_html="true" /}
+<!-- {::options parse_block_html="true" /}
 <details><summary markdown="span">**A solution**</summary>
 ```python
 epochs = 10
@@ -354,7 +354,7 @@ for epoch in range(epochs):
 ```
 </details>
 <br/>
-{::options parse_block_html="false" /} 
+{::options parse_block_html="false" /}  -->
 
 ## Visualizing your training with Tensorboard
 A useful tool to visualize your training is [**Tensorboard**](https://www.tensorflow.org/tensorboard/). You can also have a look at solutions such as [**Weights & Biases**](https://wandb.ai/site), but we will focus on the simpler Tensorboard for now.
@@ -363,7 +363,7 @@ You can easily use Tensorboard with Pytorch by looking at [**torch.utils.tensorb
 ## Saving and loading a Pytorch model
 Once training is completed, it can be useful to save the weights of your neural network to use it later. The following [tutorial](https://pytorch.org/tutorials/beginner/basics/saveloadrun_tutorial.html) explains how you can do this. Now, try to save and then load your trained model.
 
-{::options parse_block_html="true" /}
+<!-- {::options parse_block_html="true" /}
 <details><summary markdown="span">**A solution**</summary>
 ```python
 path = './le_net_cifar10.pth'
@@ -380,7 +380,7 @@ trained_model.eval()
 ```
 </details>
 <br/>
-{::options parse_block_html="false" /} 
+{::options parse_block_html="false" /}  -->
 
 ## Testing your model
 You must now **evaluate the performance of your trained model** on the **test set**. To this end, you have to iterate through test samples, and perform forward passes on given data batches. You might want to compute the **test loss**, but also any **accuracy-related metrics** you are interested in. You could also **visualize some test samples** along with the **output distribution of your model**.
