@@ -2,7 +2,7 @@
 layout: distill
 title: Introduction to Deep Learning - Part 1
 description: Deep Convolutional Neural Networks for image classification
-date: 2021-11-07
+date: 2021-12-05
 
 authors:
   - name: Pierre Marza
@@ -32,11 +32,8 @@ _styles: >
 
 ---
 
-**NOTE:**
-Citations, footnotes, and code blocks do not display correctly in the dark mode since distill does not support the dark mode by default.
-
 ## Context
-The goals of this session are to practice with **implementing a Convolution Neural Network**, **understanding the involved computations**, and more generally, to **build a full Deep Learning pipeline in PyTorch** to train a model on a given dataset. Some parts of this course are inspired from this great [Pytorch Tutorial](https://pytorch.org/tutorials/beginner/blitz/cifar10_tutorial.html#sphx-glr-beginner-blitz-cifar10-tutorial-py)
+The goals of this session are to practice with **implementing a Convolutional Neural Network**, **understanding the involved computations**, and more generally, to **build a full Deep Learning pipeline in PyTorch** to train a model on a given dataset. Some parts of this course are inspired from this great [Pytorch Tutorial](https://pytorch.org/tutorials/beginner/blitz/cifar10_tutorial.html#sphx-glr-beginner-blitz-cifar10-tutorial-py)
 
 ## Installation
 We will be coding with **Python3** and will use the **Pytorch** library.
@@ -51,17 +48,17 @@ Why would we want to use a CNN when dealing with images ? We could also use a si
 
 Take some time to think about what is the prior knowledge incorporated into a CNN, that is not in an MLP.
 
-{::options parse_block_html="true" /}
+<!-- {::options parse_block_html="true" /}
 <details><summary markdown="span">**An answer**</summary>
 The assumption that data has a spatial underlying structure, known as **Spatial Inductive Bias** is used in CNNs. Indeed, the convolution operation aggregates information from only the local spatial neighborood around the center of the filter. Models equipped with such inductive bias are particularly well suited to extract information from the pixels of an image.
 </details>
 <br/>
-{::options parse_block_html="false" /} 
+{::options parse_block_html="false" /}  -->
 
 ## The CIFAR-10 dataset
 The [CIFAR-10 dataset](https://www.cs.toronto.edu/~kriz/cifar.html) is a well-known dataset of RGB images. It is composed of **60000 32x32 colour images** labelled as belonging to one of **10 classes**. You can find **6000 images per class**. There are **50000 training images** and **10000 test images**. If you are looking for a dataset with more classes, you can look at [CIFAR-100](https://www.cs.toronto.edu/~kriz/cifar.html) that, as indicated by its name, contains 100 semantic classes.
 
-The following Pytorch code takes advantage of [**torchvision**](https://pytorch.org/vision/stable/index.html). It allows you to create 3 datasets (train, val, test) and to apply a normalization to the images. A tuple of the 10 classes in the CIFAR-10 dataset is also given for you to use later.
+The following Pytorch code takes advantage of [**torchvision**](https://pytorch.org/vision/stable/index.html). It allows you to create 3 datasets (train, val, test) and to apply a normalization to the images. The names of the 10 classes in the CIFAR-10 dataset are also given for you to use later.
 
 ```python
 import torch
@@ -73,13 +70,12 @@ transform = transforms.Compose(
      transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))])
 
 train_set = torchvision.datasets.CIFAR10(root='./data', train=True, download=True, transform=transform)
+test_set = torchvision.datasets.CIFAR10(root='./data', train=False, download=True, transform=transform)
 
 # Split train set into a train and validation sets
 train_size = int(0.75*len(train_set))
 valid_size = len(train_set) - train_size
 train_set, valid_set = torch.utils.data.random_split(train_set, [train_size, valid_size])
-
-test_set = torchvision.datasets.CIFAR10(root='./data', train=False, download=True, transform=transform)
 
 # Ground-Truth classes in the CIFAR-10 dataset
 classes = ('plane', 'car', 'bird', 'cat',
@@ -213,7 +209,7 @@ print('out: ', out.shape)   # out:  torch.Size([4, 10])
 It is important to understand the convolution operations going on inside your neural network.
 
 ### Formula
-You are given a parametrised convolutional layer, along with the dimensions of an input tensor (feature map). Write the formula that gives you the **dimensions of the output tensor**.
+You are given a **parametrised convolutional layer**, along with the **dimensions of an input tensor** (feature map). Write the formula that gives you the **dimensions of the output tensor**.
 
 <!-- {::options parse_block_html="true" /}
 <details><summary markdown="span">**A solution**</summary>
