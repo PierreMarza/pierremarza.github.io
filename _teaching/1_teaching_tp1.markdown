@@ -2,7 +2,7 @@
 layout: distill
 title: Introduction to Deep Learning - Part 1
 description: Deep Convolutional Neural Networks for image classification
-date: 2021-12-05
+date: 2021-12-07
 
 authors:
   - name: Pierre Marza
