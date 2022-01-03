@@ -13,4 +13,4 @@ Lecture Materials available [here](https://perso.liris.cnrs.fr/christian.wolf/te
 
 ## Introduction to Deep Learning - Part 2 (4h)
 
-## Deep Learning Project (36h)
+## [Deep Learning Project (36h)](https://pierremarza.github.io/teaching/1_teaching_project/)
