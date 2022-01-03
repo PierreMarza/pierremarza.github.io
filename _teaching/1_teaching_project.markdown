@@ -2,7 +2,7 @@
 layout: distill
 title: Deep Learning Project
 description: Semi-supervised Image Classification
-date: 2021-01-02
+date: 2021-01-03
 
 authors:
   - name: Pierre Marza
