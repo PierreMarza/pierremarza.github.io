@@ -36,9 +36,26 @@ _styles: >
 Annotating data can be costly, and large corpuses of carefully labeled data are not always available. An important domain of study in Deep Learning is thus to learn as much as posible from unlabelled data. This is exactly what you are going to do in this project.
 
 ## Dataset
-We will use the Stanford [**STL-10 dataset**](https://cs.stanford.edu/~acoates/stl10/). It is composed of **100k unlabeled images** along with **500 labeled training images per class**. This is the only data you can use for training your model.
+We will use the Stanford [**STL-10 dataset**](https://cs.stanford.edu/~acoates/stl10/). It is composed of **100k unlabeled images** along with 500 labeled training images per class mapped to **10 pre-defined training folds of 1k images**. Standard testing
+protocol consists of training 10 different models on each of the 10 predefined folds of data, and report average accuracy on full test set. However, for compute reasons, **you will only use the labeled pre-defined fold with id 0**. The **full test set is made of 8k images**.
 
-In the context of this project, **you cannot use models that were pre-trained on other datasets**.
+In the context of this project, **you cannot use models that were pre-trained on other datasets** and **you will not be able to use any additional data**.
+
+The following code allows you to access the only data you can use during the project:
+```python
+import torchvision
+
+# Train data
+unlabeled_train_set = torchvision.datasets.STL10(root='./data', split='unlabeled', download=True)
+labeled_train_set = torchvision.datasets.STL10(root='./data', split='train', folds=0, download=True)
+
+# Test data (to report model performance)
+test_set = torchvision.datasets.STL10(root='./data', split='test', download=True)
+```
+
+You should have **100k unlabeled training images**, **1k labeled training images** (from fold 0) and **8k test images**.
+
+**Important note:** It is of course **forbidden to validate your models on test data.**
 
 ## Timeline
 * **January, 3**: Form **4 groups**.
