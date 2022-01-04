@@ -1,8 +1,8 @@
 ---
 layout: distill
 title: Introduction to Deep Learning - Part 2
-description: Deep Q Learning
-date: 2021-12-07
+description: Deep Q-Learning
+date: 2021-01-04
 
 authors:
   - name: Pierre Marza
@@ -33,12 +33,13 @@ _styles: >
 ---
 
 ## Context
-The goals of this session are to practice with ..... Some parts of this course, as well as code snippets, are reproduced from this great [Pytorch Tutorial](https://pytorch.org/tutorials/intermediate/reinforcement_q_learning.html)
+This session is an introduction to Reinforcement Learning, and more particularly Deep Q-Learning. Some parts of this course, as well as code snippets, are reproduced from this great [Pytorch Tutorial](https://pytorch.org/tutorials/intermediate/reinforcement_q_learning.html)
 
 ## Installation
-We will be coding with **Python3** and will use the **Pytorch** and **gym** library.
+We will be coding with **Python3** and will use the [**Pytorch**](https://pytorch.org/) and [**gym**](https://gym.openai.com/) libraries.
 
 To install Pytorch on your local machine, follow this [link](https://pytorch.org/get-started/locally/).
+
 To install gym, simply run **pip install gym**
 
 ## The Cartpole task
@@ -127,12 +128,12 @@ $$\theta_{k+1} \leftarrow \theta_{k}-\left.\alpha \nabla_{\theta}\left[\frac{1}{
 ## Deep Q-Network (DQN)
 Now that we have reviewed some theory, let's start practicing!
 
-**Implement a Deep Q-Network** that takes as input the current state $s_t$ and approximates the associated Q-value. Be careful of the dimensions of the observation tensor that will be fed to your network, and think about the desired output dimension. As a sanity chack, verify you can pass it one observation from your gym environment.
+**Implement a Deep Q-Network** that takes as input the current state $s_t$ and outputs $Q_\theta(s_t, a)$ for each available action $a$. Be careful of the dimensions of the observation tensor that will be fed to your network, and think about the desired output dimension. As a sanity check, verify you can pass it one observation from your gym environment.
 
-## Training our DQN
+## DQN Training
 
 ### Setting up training
-We must fill in the following code. Different parts are annotated. Refer to the following subsections for more details.
+You must fill in the following code. Different parts are annotated. Refer to the following subsections for more details.
 
 ```python
 # Create the environment
@@ -181,7 +182,7 @@ steps_done = 0
 episode_durations = []
 ```
 #### 1. Target Network
-Deep Q-Learning can be quite unstable. Thus, another trick is to instantiate one DQN, and another copy of the same model, known as **target network**. The parameters of the latter will be updated every $n$ steps to match the parameters of the DQN you optimize. The target network is used to compute the target Q-value in the update rule.
+Deep Q-Learning can be quite unstable. Thus, a trick is to instantiate one DQN, and another copy of the same model, known as **target network**. The parameters of the latter will be updated every $n$ steps to match the parameters of the DQN you optimize. The target network is used to compute the target Q-value in the update rule.
 
 #### 2. Replay Buffer
 In RL, as training data is collected while interacting with the environment, samples are correlated. The fundamental assumption of i.i.d (idependently and identically distributed) samples is thus violated.
@@ -215,7 +216,7 @@ class ReplayMemory(object):
 In the original [paper](https://www.cs.toronto.edu/~vmnih/docs/dqn.pdf) introducing DQN to play Atari Games, authors chose to use the **RMSProp** optimizer. You should start by trying the same as well.
 
 ### Acting in the environment
-Our agent must take actions in the environment. As a common practice, we will adopt the $\epsilon$-greedy approach, where we select a random action with probability $\epsilon$, and otherwise the action $a$ with highest Q-value when being in state $s$ according to our DQN.
+Our agent must take actions in the environment. As a common practice, we will adopt the $\epsilon$-greedy approach, where we select a random action with probability $\epsilon$, and otherwise the action $a$ with highest Q-value when being in state $s_t$ according to our DQN.
 
 Implement the following function to take actions,
 ```python
@@ -230,7 +231,7 @@ def select_action(state):
 ```
 
 ### Optimizing our DQN
-You must now fill in the function taht takes care of optimizing the network.
+You must now fill in the function that takes care of optimizing the network.
 ```python
 def optimize_model():
     if len(memory) < BATCH_SIZE:
@@ -252,22 +253,15 @@ def optimize_model():
     reward_batch = torch.cat(batch.reward)
 
     ##############################################
-    # Compute Q(s_t, a) 
+    # Compute Q(s_t, a) from your DQN model
     # state_action_values = ...
     ##############################################
-    
-    # Expected values of actions for non_final_next_states are computed based
-    # on the "older" target_net; selecting their best reward with max(1)[0].
-    # This is merged based on the mask, such that we'll have either the expected
-    # state value or 0 in case the state was final.
-    next_state_values = torch.zeros(BATCH_SIZE, device=device)
-    next_state_values[non_final_mask] = target_net(non_final_next_states).max(1)[0].detach()
 
     ##############################################
-    # Compute the expected Q values
+    # Compute the target for your loss (that you will compare to state_action_values)
     # expected_state_action_values = ...
     ##############################################
-
+    
     ##############################################
     # Compute Huber loss
     # criterion = ...
@@ -286,6 +280,8 @@ def optimize_model():
 In the original [paper](https://www.cs.toronto.edu/~vmnih/docs/dqn.pdf) introducing DQN to play Atari Games, authors chose to use the **Huber Loss**. Try to do the same. Note that another name for such loss is **SmoothL1Loss**.
 
 ### Training loop
+You can now use the following training code and start optimizing your agent.
+
 ```python
 def plot_durations():
     plt.figure(2)
