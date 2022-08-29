@@ -1,7 +1,6 @@
 ---
 layout: post
-date: 2020-12-01 07:59:00-0400
+date: 2020-02-23 07:59:00-0400
 inline: true
 ---
-
-I am starting my PhD at [INSA Lyon](https://www.insa-lyon.fr/en/)/[LIRIS](https://liris.cnrs.fr/en), with [C. Wolf](https://perso.liris.cnrs.fr/christian.wolf/), [L. Matignon](https://perso.liris.cnrs.fr/laetitia.matignon/) and [O. Simonin](http://perso.citi-lab.fr/osimonin/).
+One paper accepted at **CVPR 2020**: [DeepLPF: Deep Local Parametric Filters for Image Enhancement](https://openaccess.thecvf.com/content_CVPR_2020/html/Moran_DeepLPF_Deep_Local_Parametric_Filters_for_Image_Enhancement_CVPR_2020_paper.html).

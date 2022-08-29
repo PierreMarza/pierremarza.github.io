@@ -1,7 +1,7 @@
 ---
 layout: post
-date: 2021-06-20 15:59:00-0400
+date: 2020-02-01 07:59:00-0400
 inline: true
 ---
 
-We won the [MultiON Challenge](http://multion-challenge.cs.sfu.ca/) for [Embodied AI Workshop](https://embodied-ai.org/) at **CVPR 2021**! [[video](https://www.youtube.com/watch?v=boDaAORoKho&t=1s)] [[arXiv](https://arxiv.org/abs/2107.06011)]
+I am starting my internship at Orange Labs, working on Visual Question Answering with [Corentin Kervadec](https://corentinkervadec.github.io/), [Grigory Antipov](https://scholar.google.com/citations?user=CoOz8K0AAAAJ&hl=en), [Moez Baccouche](https://scholar.google.com/citations?user=olfpe-kAAAAJ&hl=fr) and [Christian Wolf](https://perso.liris.cnrs.fr/christian.wolf/).
