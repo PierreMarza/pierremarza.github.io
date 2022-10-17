@@ -25,7 +25,7 @@ Prior to this, I spent some time as an intern at [Huawei Noah's Ark Computer Vis
 
 I got my Master's degree from [INSA Lyon](https://www.insa-lyon.fr/en/), with a major in Computer Science. I spent a semester at [KTH](https://www.kth.se/en) in Stockholm, studying Deep Learning, Machine Learning and Reinforcement Learning.
 
-**Reviewing experience**: TPAMI, ICML 2022 (outstanding reviewer)
+**Reviewing experience**: TPAMI, ICML 2022 (outstanding reviewer), ICLR 2023
 
 **My CV is available [here](/assets/pdf/CV_Pierre_Marza.pdf)**
 
