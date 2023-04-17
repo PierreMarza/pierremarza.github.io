@@ -2,9 +2,8 @@
 layout: page
 permalink: /projects/
 title: Projects
-description: Some projects I worked on.
 nav: true
-display_categories: [Academic research projects]
+display_categories: [Research projects]
 horizontal: false
 ---
 <div class="projects">

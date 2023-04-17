@@ -4,7 +4,7 @@ title: Brain ML
 description: We studied a brain inspired neural approach to perform multi-modal clustering.
 img: /assets/img/brain_ml_img.png
 importance: 1
-category: Academic research projects
+category: Academic projects
 ---
 
 **Date:** 2018--2019

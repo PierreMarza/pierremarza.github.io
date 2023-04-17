@@ -4,7 +4,7 @@ title: Sim2Real Domain Transfer
 description: We studied Sim2Real Domain Transfer in the context of Visual Navigation.
 img: /assets/img/psat_img.png
 importance: 1
-category: Academic research projects
+category: Academic projects
 ---
 
 **Date:** 2019--2020
