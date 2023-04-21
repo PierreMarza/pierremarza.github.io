@@ -61,7 +61,7 @@ Implicit representations such as Neural Radiance Fields (NeRF) have been shown t
 <img src="/assets/img/autonerf/teaser_video.gif" width="700" />
 
 ## Reconstructing house-scale scenes
-We start by illustrating the possibility of autonomously reconstructing complex large-scale environments such as apartments or houses from the continuous representations trained on data collected by agents exploring a scene using a modular policy. You can visualize RGB and semantics meshes (extracted from NeRF models) of 5 scenes from the Gibson val set. The semantics head of the NeRF models were trained with GT labels from the Habitat simulator.
+We start by illustrating the possibility of autonomously reconstructing complex large-scale environments such as apartments or houses from the continuous representations trained on data collected by agents exploring a scene using a modular policy. You can visualize RGB and semantics meshes (extracted from NeRF models) of 5 scenes from the Gibson val set. The semantics head of the NeRF models was trained with GT labels from the Habitat simulator.
 
 <!-- Import the component -->
 <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.0.1/model-viewer.min.js"></script>
@@ -69,22 +69,22 @@ We start by illustrating the possibility of autonomously reconstructing complex 
 <!-- Code adapted from https://modelviewer.dev/examples/augmentedreality/index.html#customButton -->
 <model-viewer
   alt="Collierville"
-  src="/assets/img/autonerf/Collierville_rgb.glb"
+  src="/assets/img/autonerf/Corozal_rgb.glb"
   style="width: 100%; height: 600px; background-color: #404040"
-  poster="/assets/img/autonerf/Collierville_rgb.png"
+  poster="/assets/img/autonerf/Corozal_rgb.png"
 	exposure=".8"
   auto-rotate
   camera-controls
 >
   <div class="slider">
     <div class="slides">
-      <button class="slide selected" onclick="switchSrc(this, 'Collierville_rgb')" style="background-image: url('/assets/img/autonerf/Collierville_rgb.png');">
-      </button>
-      <button class="slide" onclick="switchSrc(this, 'Collierville_sem')" style="background-image: url('/assets/img/autonerf/Collierville_sem.png');">
-      </button>
-      <button class="slide" onclick="switchSrc(this, 'Corozal_rgb')" style="background-image: url('/assets/img/autonerf/Corozal_rgb.png');">
+      <button class="slide selected" onclick="switchSrc(this, 'Corozal_rgb')" style="background-image: url('/assets/img/autonerf/Corozal_rgb.png');">
       </button>
       <button class="slide" onclick="switchSrc(this, 'Corozal_sem')" style="background-image: url('/assets/img/autonerf/Corozal_sem.png');">
+      </button>
+      <button class="slide" onclick="switchSrc(this, 'Collierville_rgb')" style="background-image: url('/assets/img/autonerf/Collierville_rgb.png');">
+      </button>
+      <button class="slide" onclick="switchSrc(this, 'Collierville_sem')" style="background-image: url('/assets/img/autonerf/Collierville_sem.png');">
       </button>
       <button class="slide" onclick="switchSrc(this, 'Darden_rgb')" style="background-image: url('/assets/img/autonerf/Darden_rgb.png');">
       </button>
