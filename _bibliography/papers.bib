@@ -1,6 +1,19 @@
 ---
 ---
 
+@article{Marza_2023_AutoNeRF,
+  bibtex_show={true},
+  abbr={arXiv},
+  title={AutoNeRF: Training Implicit Scene Representations with Autonomous Agents},
+  author={Marza, Pierre and Matignon, Laetitia and Simonin, Olivier and Batra, Dhruv and Wolf, Christian and Chaplot, Devendra Singh},
+  abstract={Implicit representations such as Neural Radiance Fields (NeRF) have been shown to be very effective at novel view synthesis. However, these models typically require manual and careful human data collection for training. In this paper, we present AutoNeRF, a method to collect data required to train NeRFs using autonomous embodied agents. Our method allows an agent to explore an unseen environment efficiently and use the experience to build an implicit map representation autonomously. We compare the impact of different exploration strategies including handcrafted frontier-based exploration and modular approaches composed of trained high-level planners and classical low-level path followers. We train these models with different reward functions tailored to this problem and evaluate the quality of the learned representations on four different downstream tasks: classical viewpoint rendering, map reconstruction, planning, and pose refinement. Empirical results show that NeRFs can be trained on actively collected data using just a single episode of experience in an unseen environment, and can be used for several downstream robotic tasks, and that modular trained exploration models significantly outperform the classical baselines.},
+  journal={arXiv},
+  year={2023},
+  pdf={https://arxiv.org/abs/2304.11241},
+  html={https://pierremarza.github.io/projects/autonerf/},
+  selected={true}
+}
+
 @article{Marza_2022_Implicit,
   bibtex_show={true},
   abbr={arXiv},
@@ -9,8 +22,7 @@
   abstract={Understanding and mapping a new environment are core abilities of any autonomously navigating agent. While classical robotics usually estimates maps in a stand-alone manner with SLAM variants, which maintain a topological or metric representation, end-to-end learning of navigation keeps some form of memory in a neural network. Networks are typically imbued with inductive biases, which can range from vectorial representations to birds-eye metric tensors or topological structures. In this work, we propose to structure neural networks with two neural implicit representations, which are learned dynamically during each episode and map the content of the scene: (i) the Semantic Finder predicts the position of a previously seen queried object; (ii) the Occupancy and Exploration Implicit Representation encapsulates information about explored area and obstacles, and is queried with a novel global read mechanism which directly maps from function space to a usable embedding space. Both representations are leveraged by an agent trained with Reinforcement Learning (RL) and learned online during each episode. We evaluate the agent on Multi-Object Navigation and show the high impact of using neural implicit representations as a memory source.},
   journal={arXiv},
   year={2022},
-  html={https://arxiv.org/abs/2210.05129},
-  pdf={https://arxiv.org/pdf/2210.05129.pdf},
+  pdf={https://arxiv.org/abs/2210.05129},
   selected={true}
 }
 
@@ -22,8 +34,7 @@
   title={An experimental study of the vision-bottleneck in VQA},
   journal={arXiv},
   year={2022},
-  html={https://arxiv.org/abs/2202.06858},
-  pdf={https://arxiv.org/pdf/2202.06858.pdf}
+  pdf={https://arxiv.org/abs/2202.06858}
 }
 
 @article{Marza_2022_Teaching,
@@ -37,8 +48,8 @@
   title     = {Teaching Agents how to Map: Spatial Reasoning for Multi-Object Navigation (Winning entry of the MultiON Challenge at CVPR 2021)},
   journal   = {International Conference on Intelligent Robots and Systems (IROS)},
   year      = {2022},
-  html={https://arxiv.org/abs/2107.06011},
-  pdf={https://arxiv.org/pdf/2107.06011.pdf},
+  html={https://pierremarza.github.io/projects/teaching_agents_how_to_map/},
+  pdf={https://arxiv.org/abs/2107.06011},
   code={https://github.com/PierreMarza/teaching_agents_how_to_map},
   selected={true}
 }
@@ -60,8 +71,7 @@ title = {DeepLPF: Deep Local Parametric Filters for Image Enhancement},
 booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
 month = {June},
 year = {2020},
-html={https://openaccess.thecvf.com/content_CVPR_2020/html/Moran_DeepLPF_Deep_Local_Parametric_Filters_for_Image_Enhancement_CVPR_2020_paper.html},
-pdf={https://openaccess.thecvf.com/content_CVPR_2020/papers/Moran_DeepLPF_Deep_Local_Parametric_Filters_for_Image_Enhancement_CVPR_2020_paper.pdf},
+pdf={https://openaccess.thecvf.com/content_CVPR_2020/html/Moran_DeepLPF_Deep_Local_Parametric_Filters_for_Image_Enhancement_CVPR_2020_paper.html},
 code={https://github.com/sjmoran/DeepLPF},
 selected={true}
 }

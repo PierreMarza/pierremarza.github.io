@@ -2,7 +2,7 @@
 layout: distill
 title: "AutoNeRF: Training Implicit Scene Representations with Autonomous Agents"
 description:
-date: 2023-04-17
+date: 2023-04-25
 category: Research projects
 img: /assets/img/autonerf/teaser_figure.png
 
