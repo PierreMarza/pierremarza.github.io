@@ -2,7 +2,7 @@
 layout: distill
 title: Introduction to Deep Learning
 description: Convolutional Neural Networks
-date: 2023-09-01
+date: 2023-09-11
 
 authors:
   - name: Pierre Marza
