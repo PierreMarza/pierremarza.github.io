@@ -5,31 +5,9 @@ title: Teaching
 description: Materials for taught courses.
 nav: true
 # years: [2021]
-display_categories: [2021]
+display_categories: [2021, 2023]
 horizontal: false
 ---
-<!-- <div class="publications">
-{% assign courses = site.teaching%}
-{% for y in page.years %}
-  <h2 class="year">{{y}}</h2>
-    {% if page.horizontal %}
-        <div class="container">
-          <div class="row row-cols-2">
-          {% for course in courses %}
-            {% include teaching_horizontal.html %}
-          {% endfor %}
-          </div>
-        </div>
-      {% else %}
-        <div class="grid">
-          {% for course in courses %}
-            {% include teaching.html %}
-          {% endfor %}
-        </div>
-      {% endif %}
-{% endfor %}
-
-</div> -->
 
 <div class="teaching">
   {% if site.enable_teaching_categories and page.display_categories %}
