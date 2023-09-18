@@ -2,7 +2,7 @@
 layout: distill
 title: Introduction to Deep Learning
 description: Recurrent Neural Networks
-date: 2023-09-14
+date: 2023-09-18
 
 authors:
   - name: Pierre Marza
