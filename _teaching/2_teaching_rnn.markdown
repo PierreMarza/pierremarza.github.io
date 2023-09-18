@@ -58,6 +58,16 @@ The dataset you will use can be downloaded [here](https://download.pytorch.org/t
 When dealing with text data, some pre-processing is usually necessary. The following code does eveything you need. After executing it, you will end up with 3 lists: *train_samples*, *val_samples* and *test_samples* that correspond to our 3 data sets. Each element in a list will be a dictionary with 2 keys: *name*, i.e. a given input name (sequence of characters) and *label* which is the id (from 0 to 17) associated with the country of origin of the name. This code also computes the length of the longuest name in the data: this can be useful to pad input sequences (names) of different lengths so that we can build training batches out of them. Some of the defined functions are not directly used in this code snippet (*letterToIndex*, *letterToTensor*, *lineToTensor*) but will be useful later to implement your *Dataset* class (see next section). These functions build a tensor by encoding each character in the name as a one-hot vector (vector of zeros and only a one at the id position associated to the letter) that thus contains as many elements as existing letters.
 
 ```python
+from io import open
+import glob
+import numpy as np
+import os
+import unicodedata
+import random
+import string
+import torch
+
+
 def findFiles(path): 
     return glob.glob(path)
 
