@@ -9,7 +9,7 @@ category: 2023
 
 ## [Convolutional Neural Networks](https://pierremarza.github.io/teaching/2_teaching_cnn/)
 
-## [Recurrent Neural Networks]()
+## [Recurrent Neural Networks](https://pierremarza.github.io/teaching/2_teaching_rnn/)
 
 ## [Transformers and Attention]()
 

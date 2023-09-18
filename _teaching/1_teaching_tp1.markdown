@@ -229,10 +229,6 @@ $$
 <br/>
 {::options parse_block_html="false" /} 
 
-<!-- ### Maxpooling Layer
-Do the same for a Maxpooling layer. -->
-
-
 ### Code
 Now, you can write a function that takes as input a tensor shape, as well as the hyperparameters of the layer and outputs the size of the output tensor. You can then check your function is correct by comparing its returned value with the real shapes of tensors within the forward pass of your neural network.
 
