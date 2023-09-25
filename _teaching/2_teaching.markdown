@@ -11,6 +11,6 @@ category: 2023
 
 ## [Recurrent Neural Networks](https://pierremarza.github.io/teaching/2_teaching_rnn/)
 
-## [Transformers and Attention]()
+## [Transformers and Attention](https://pierremarza.github.io/teaching/2_teaching_transformers/)
 
 ## [Project]()
