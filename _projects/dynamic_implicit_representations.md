@@ -49,9 +49,13 @@ _styles: >
 [**Paper**](https://arxiv.org/abs/2210.05129){: .btn}
 [**Code**](https://github.com/PierreMarza/dynamic_implicit_representations){: .btn}
 [**ICCV 2023 poster**](/assets/img/dynamic_implicit_representations/iccv2023_poster.pdf){: .btn}
+[**ICCV 2023 video**](https://youtu.be/r_F9M80GPUI){: .btn}
 
 ## Abstract
 Understanding and mapping a new environment are core abilities of any autonomously navigating agent. While classical robotics usually estimates maps in a stand-alone manner with SLAM variants, which maintain a topological or metric representation, end-to-end learning of navigation keeps some form of memory in a neural network. Networks are typically imbued with inductive biases, which can range from vectorial representations to birds-eye metric tensors or topological structures. In this work, we propose to structure neural networks with two neural implicit representations, which are learned dynamically during each episode and map the content of the scene: (i) the Semantic Finder predicts the position of a previously seen queried object; (ii) the Occupancy and Exploration Implicit Representation encapsulates information about explored area and obstacles, and is queried with a novel global read mechanism which directly maps from function space to a usable embedding space. Both representations are leveraged by an agent trained with Reinforcement Learning (RL) and learned online during each episode. We evaluate the agent on Multi-Object Navigation and show the high impact of using neural implicit representations as a memory source.
+
+<iframe width="700" height="395" src="https://www.youtube.com/embed/r_F9M80GPUI" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+</iframe>
 
 ## Multi-ON
 We target the Multi-ON task, where an agent is required to reach a sequence of target objects, more precisely coloured cylinders, in a certain order, and which was used for a
