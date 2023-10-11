@@ -152,6 +152,189 @@ class TransformerEncoderLayer(nn.Module):
 
 ```
 
+{::options parse_block_html="true" /}
+<details><summary markdown="span">**A solution**</summary>
+```python
+import torch
+import torch.nn.functional as F
+
+class TransformerEncoder(nn.Module):
+    def __init__(self, emsize, d_hid, nlayers, dropout):
+        super().__init__()
+        self.emsize = emsize
+        self.d_hid = d_hid
+        self.nlayers = nlayers
+        self.dropout = dropout
+
+        # First projection layer
+        self.proj_layer = nn.Linear(emsize, d_hid)
+
+        # concat_cls
+        self.cls_embedding_layer = nn.Embedding(num_embeddings=1, embedding_dim=d_hid)
+
+        # add_positional_encoding
+        self.pos_encoding = PositionalEncoding(
+            d_model=d_hid, max_len=20, dropout=dropout
+        )
+
+        # encoder layers
+        self.encoder = TransformerEncoderLayer(d_hid=d_hid, dq=64, dk=64, dv=64)
+
+        # Classif
+        self.classif = nn.Linear(d_hid, 18)
+
+    def concat_cls(self, x):
+        bs, device = x.shape[0], x.device
+        cls_token = self.cls_embedding_layer(torch.zeros((bs, 1)).long().to(device))
+        x = torch.cat([cls_token, x], dim=1)
+        return x
+
+    def add_positional_encoding(self, x):
+        return self.pos_encoding(x)
+
+    def forward(self, x, mask):
+        x = self.proj_layer(x)
+        x = self.concat_cls(x)
+        x = self.add_positional_encoding(x)
+        x = self.encoder(x, mask)
+        return self.classif(x[:, 0])
+
+
+class PositionalEncoding(nn.Module):
+    def __init__(self, d_model, dropout, max_len):
+        super().__init__()
+        self.dropout = nn.Dropout(p=dropout)
+
+        position = torch.arange(max_len).unsqueeze(1)
+        div_term = torch.exp(
+            torch.arange(0, d_model, 2) * (-math.log(10000.0) / d_model)
+        )
+        pe = torch.zeros(max_len, 1, d_model)
+        pe[:, 0, 0::2] = torch.sin(position * div_term)
+        pe[:, 0, 1::2] = torch.cos(position * div_term)
+        self.register_buffer("pe", pe)
+
+    def forward(self, x):
+        """
+        Arguments:
+            x: Tensor, shape ``[seq_len, batch_size, embedding_dim]``
+        """
+        x = x + self.pe[: x.size(0)]
+        return self.dropout(x)
+
+
+class TransformerEncoderLayer(nn.Module):
+    def __init__(self, d_hid, dq, dk, dv):
+        super().__init__()
+
+        # Attention
+        self.linear_q = nn.Linear(d_hid, dq)
+        self.linear_k = nn.Linear(d_hid, dk)
+        self.linear_v = nn.Linear(d_hid, dv)
+
+        # LayerNorm
+        self.layer_norm = nn.LayerNorm(d_hid)
+
+        # Feed forward
+        self.feed_forward_layer = nn.Sequential(
+            nn.Linear(d_hid, d_hid), nn.ReLU(), nn.Linear(d_hid, d_hid)
+        )
+
+    def predicting_qkv(self, x):
+        q = self.linear_q(x)
+        k = self.linear_k(x)
+        v = self.linear_v(x)
+        return q, k, v
+
+    def self_attention(self, q, k, v, mask=None, dropout=None):
+        "Compute 'Scaled Dot Product Attention'"
+        d_k = q.size(-1)
+        scores = torch.matmul(q, k.transpose(-2, -1)) / math.sqrt(d_k)
+
+        if mask is not None:
+            scores = scores.masked_fill(mask == 0, -1e9)
+        p_attn = F.softmax(scores, dim=-1)
+
+        if dropout is not None:
+            p_attn = dropout(p_attn)
+        return torch.matmul(p_attn, v)
+
+    def norm(self, x):
+        return self.layer_norm(x)
+
+    def feed_forward(self, x):
+        return self.feed_forward_layer(x)
+
+    def forward(self, x, mask):
+        q, k, v = self.predicting_qkv(x)
+        out_attention = self.self_attention(q, k, v, mask)
+        out_attention = self.norm(x + out_attention)
+
+        out_feed_forward = self.feed_forward(out_attention)
+        out_feed_forward = self.norm(out_attention + out_feed_forward)
+
+        return out_feed_forward
+
+class CustomDataset(torch.utils.data.Dataset):
+    def __init__(self, samples, max_line_len):
+        self.samples = samples
+        self.max_line_len = max_line_len
+
+    def __len__(self):
+        return len(self.samples)
+
+    def __getitem__(self, index):
+        sample_dict = self.samples[index]
+
+        name = lineToTensor(sample_dict["name"])
+
+        #####################################################################################
+        ## Same dataset as in previous practical, with simply a different mask computation
+        mask = torch.zeros((self.max_line_len + 1, self.max_line_len + 1))
+        mask[: name.shape[0] + 1, : name.shape[0] + 1] = 1
+        #####################################################################################
+
+        name = torch.cat(
+            [
+                name,
+                torch.zeros(
+                    (self.max_line_len - name.shape[0], name.shape[1], name.shape[2])
+                ),
+            ],
+            dim=0,
+        )
+
+        label = sample_dict["label"]
+        label = torch.Tensor([label])
+        return {"name": name, "label": label, "mask": mask}
+
+train_dataset = CustomDataset(train_samples, max_line_len)
+val_dataset = CustomDataset(val_samples, max_line_len)
+test_dataset = CustomDataset(test_samples, max_line_len)
+
+batch_size = 16
+train_dataloader = torch.utils.data.DataLoader(
+    train_dataset,
+    batch_size=batch_size,
+    shuffle=True,
+)
+val_dataloader = torch.utils.data.DataLoader(
+    val_dataset,
+    batch_size=batch_size,
+    shuffle=False,
+)
+test_dataloader = torch.utils.data.DataLoader(
+    test_dataset,
+    batch_size=batch_size,
+    shuffle=False,
+)
+
+model = TransformerEncoder(emsize=57, d_hid=64, nlayers=2, dropout=0.1)
+```
+</details>
+<br/>
+{::options parse_block_html="false" /} 
+
 ### Concatenating a learned 'CLS' token
 Implement the *concat_cls* method that takes the sequence of tokens as input and simply concatenates the 'CLS' token. In order to predict the embedding of the 'CLS' token, use a [nn.Embedding](https://pytorch.org/docs/stable/generated/torch.nn.Embedding.html) layer.
 
@@ -173,9 +356,80 @@ Implement the full forward pass of the attention layer (Positional Encoding, Sel
 ## Loss function and optimizer
 The next step is to define a [**loss function**](https://pytorch.org/docs/stable/nn.html#loss-functions) that is suited to the problem. Then you have to choose an [**optimizer**](https://pytorch.org/docs/stable/optim.html). You are encouraged to try different ones to compare them. You can also study the impact of different hyperparameters of the optimizer (learning rate, momentum, etc.)
 
+{::options parse_block_html="true" /}
+<details><summary markdown="span">**A solution**</summary>
+```python
+import torch.optim as optim
+
+criterion = torch.nn.CrossEntropyLoss()
+optimizer = optim.Adam(model.parameters(), lr=1e-3)
+```
+</details>
+<br/>
+{::options parse_block_html="false" /} 
+
 ## Training loop
 It is now to time to write the code for **training and validating your model**. You must iterate through your training data using your dataloader, and compute forward and backward passes on given data batches.
 Don't forget to log your training as well as validation losses (the latter is mainly used to tune hyperparameters).
+
+{::options parse_block_html="true" /}
+<details><summary markdown="span">**A solution**</summary>
+```python
+def train_val(run_type, criterion, dataloader, model, optimizer):
+    tot_loss = 0.0
+    tot_acc = []
+    for mb_idx, batch in tqdm(enumerate(dataloader)):
+        name = batch["name"].squeeze(2)
+        label = batch["label"].squeeze(1).long()
+        mask = batch["mask"]
+
+        if run_type == "train":
+            # zero the parameter gradients
+            optimizer.zero_grad()
+
+        # Forward pass
+        if run_type == "train":
+            out = model(name, mask=mask)
+        elif run_type == "val":
+            with torch.no_grad():
+                out = model(name, mask=mask)
+
+        # Compute loss
+        loss = criterion(out, label)
+
+        if run_type == "train":
+            # Compute gradients
+            loss.backward()
+
+            # Backward pass - model update
+            optimizer.step()
+
+        # Logging
+        tot_loss += loss.item()
+        acc = (out.argmax(dim=1) == label).tolist()
+        tot_acc.extend(acc)
+    return tot_loss, tot_acc, criterion, dataloader, model, optimizer
+
+
+epochs = 10
+for epoch in range(epochs):
+    # Training
+    epoch_loss, epoch_acc, criterion, train_dataloader, model, optimizer = train_val(
+        "train", criterion, train_dataloader, model, optimizer
+    )
+    print(
+        f"Epoch {epoch}: {epoch_loss/len(train_dataloader)}, {np.array(epoch_acc).mean()}"
+    )
+
+    # Validation
+    val_loss, val_acc, criterion, val_dataloader, model, optimizer = train_val(
+        "val", criterion, val_dataloader, model, optimizer
+    )
+    print(f"Val: {val_loss/len(val_dataloader)}, {np.array(val_acc).mean()}")
+```
+</details>
+<br/>
+{::options parse_block_html="false" /} 
 
 ## Visualizing your training with Tensorboard
 A useful tool to visualize your training is [**Tensorboard**](https://www.tensorflow.org/tensorboard/). You can also have a look at solutions such as [**Weights & Biases**](https://wandb.ai/site), but we will focus on the simpler Tensorboard for now.
