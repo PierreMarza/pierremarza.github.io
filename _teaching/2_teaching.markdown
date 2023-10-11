@@ -13,4 +13,4 @@ category: 2023
 
 ## [Transformers and Attention](https://pierremarza.github.io/teaching/2_teaching_transformers/)
 
-## [Project]()
+## [Project](https://pierremarza.github.io/teaching/2_teaching_project/)
