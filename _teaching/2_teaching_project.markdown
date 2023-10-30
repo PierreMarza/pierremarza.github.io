@@ -38,7 +38,7 @@ _styles: >
   * The names of all group members.
   * The compute resources you plan to use.
 * **November, 3**: **Written report** presenting a related work (previous work in the literature, see below), the performed data pre-processing, the models you considered (architectures, hyperparameters, etc.), quantitative results, drawn conlusions and explanations.
-* **November, 6**: **Oral presentation** (20 min + 10 min for questions).
+* **November, 6**: **Oral presentation** (10 min + 5 min for questions).
 
 ## Compute
 You can choose among 2 options:
