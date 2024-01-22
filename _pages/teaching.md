@@ -5,7 +5,7 @@ title: Teaching
 description: Materials for taught courses.
 nav: true
 # years: [2021]
-display_categories: [2021, 2023]
+display_categories: [2021, 2023, 2024]
 horizontal: false
 ---
 
