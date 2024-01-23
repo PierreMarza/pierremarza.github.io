@@ -7,7 +7,7 @@ importance: 1
 category: 2024
 ---
 
-## [Convolutional Neural Networks]()
+## [Convolutional Neural Networks](https://pierremarza.github.io/teaching/3_teaching_cnn/)
 
 ## [Recurrent Neural Networks]()
 
