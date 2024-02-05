@@ -1,6 +1,6 @@
 ---
 layout: distill
-title: Introduction to Deep Learning
+title: Artificial Intelligence & Data Analysis
 description: Convolutional Neural Networks
 date: 2024-01-22
 

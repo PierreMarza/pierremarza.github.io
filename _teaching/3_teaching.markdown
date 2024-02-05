@@ -11,7 +11,5 @@ category: 2024
 
 ## [Recurrent Neural Networks]()
 
-## [Transformers and Attention]()
-
 ## [Project]()
 

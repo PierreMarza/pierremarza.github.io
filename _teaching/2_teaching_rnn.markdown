@@ -162,7 +162,7 @@ import torch
 
 class CustomDataset(torch.utils.data.Dataset):
     def __init__(self):
-        # TODO: Initiliaze here what you will need in the other methods.
+        # TODO: Initialize here what you will need in the other methods.
         pass
     
     def __len__(self):
