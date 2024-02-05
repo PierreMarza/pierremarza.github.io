@@ -9,7 +9,7 @@ category: 2024
 
 ## [Convolutional Neural Networks](https://pierremarza.github.io/teaching/3_teaching_cnn/)
 
-## [Recurrent Neural Networks]()
+## [Recurrent Neural Networks](https://pierremarza.github.io/teaching/3_teaching_rnn/)
 
 ## [Project]()
 
