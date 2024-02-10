@@ -54,7 +54,7 @@ _styles: >
 ## Abstract
 Understanding and mapping a new environment are core abilities of any autonomously navigating agent. While classical robotics usually estimates maps in a stand-alone manner with SLAM variants, which maintain a topological or metric representation, end-to-end learning of navigation keeps some form of memory in a neural network. Networks are typically imbued with inductive biases, which can range from vectorial representations to birds-eye metric tensors or topological structures. In this work, we propose to structure neural networks with two neural implicit representations, which are learned dynamically during each episode and map the content of the scene: (i) the Semantic Finder predicts the position of a previously seen queried object; (ii) the Occupancy and Exploration Implicit Representation encapsulates information about explored area and obstacles, and is queried with a novel global read mechanism which directly maps from function space to a usable embedding space. Both representations are leveraged by an agent trained with Reinforcement Learning (RL) and learned online during each episode. We evaluate the agent on Multi-Object Navigation and show the high impact of using neural implicit representations as a memory source.
 
-<iframe width="700" height="395" src="https://www.youtube.com/embed/r_F9M80GPUI" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+<iframe width="100%" height="395" src="https://www.youtube.com/embed/r_F9M80GPUI" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
 </iframe>
 
 ## Multi-ON
@@ -84,7 +84,7 @@ implicit representation.
 ### The RL agent
 The agent is trained with RL, more precisely Proximal Policy Optimization (PPO) for 70M steps. The inner training loops of the implicit representations are supervised (red arrows in the figure below) and occur at each time step in the forward pass, whereas the RL-based outer training loop of the agent occur after N acting steps (black arrows in the figure below).
 
-<img src="/assets/img/dynamic_implicit_representations/policy.png" width="700" />
+<img src="/assets/img/dynamic_implicit_representations/policy.png" width="100%" />
 
 Given representations $$f_s$$ and $$f_o$$, a single forward pass of the agent at time step $$t$$ and for a goal $$g_t$$ involves reading the representations and providing the input to the policy. The current RGB-D observation $$o_t$$ is also encoded by the convolutional network $$c$$ (different from the projection module $$p$$ used to generate samples for training the Semantic Finder). Previous action $$a_{t-1}$$ and current goal $$g_t$$ are passed through embedding layers, named $$L(.)$$ in the following equations. These different outputs are fed to the policy,
 
@@ -105,8 +105,8 @@ To keep compute requirements limited and decrease sample complexity, in some exp
 
 ### Comparison with baselines -- with *curriculum*
 As can be seen below, our method outperforms the different competing representations when trained with the *curriculum* scheme. We make sure that all three methods are completely comparable (by pre-training all encoders in the same way, please see paper for more details).
-<img src="/assets/img/dynamic_implicit_representations/results_comp_baselines.png" width="700" />
+<img src="/assets/img/dynamic_implicit_representations/results_comp_baselines.png" width="100%" />
 
 ### Comparison with SOTA -- without *curriculum*
 Results below show that when training with both implicit representations available to the agent at the beginning (no *curriculum*) and even without any pre-training of encoders, our method outperforms the previous [state-of-the-art method](https://pierremarza.github.io/projects/teaching_agents_how_to_map/).
-<img src="/assets/img/dynamic_implicit_representations/results_comp_sota.png" width="700" />
+<img src="/assets/img/dynamic_implicit_representations/results_comp_sota.png" width="100%" />
