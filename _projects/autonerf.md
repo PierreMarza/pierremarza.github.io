@@ -61,7 +61,7 @@ _styles: >
 ## Abstract
 Implicit representations such as Neural Radiance Fields (NeRF) have been shown to be very effective at novel view synthesis. However, these models typically require manual and careful human data collection for training. In this paper, we present AutoNeRF, a method to collect data required to train NeRFs using autonomous embodied agents. Our method allows an agent to explore an unseen environment efficiently and use the experience to build an implicit map representation autonomously. We compare the impact of different exploration strategies including handcrafted frontier-based exploration and modular approaches composed of trained high-level planners and classical low-level path followers. We train these models with different reward functions tailored to this problem and evaluate the quality of the learned representations on four different downstream tasks: classical viewpoint rendering, map reconstruction, planning, and pose refinement. Empirical results show that NeRFs can be trained on actively collected data using just a single episode of experience in an unseen environment, and can be used for several downstream robotic tasks, and that modular trained exploration models significantly outperform the classical baselines.
 
-<img src="/assets/img/autonerf/teaser_video.gif" width="700" />
+<img src="/assets/img/autonerf/teaser_video.gif" width="100%" />
 
 ## Reconstructing house-scale scenes
 We start by illustrating the possibility of autonomously reconstructing complex large-scale environments such as apartments or houses from the continuous representations trained on data collected by agents exploring a scene using a modular policy. You can visualize RGB and semantics meshes (extracted from NeRF models) of 5 scenes from the Gibson val set. The semantics head of the NeRF models was trained with GT labels from the Habitat simulator.
@@ -174,7 +174,7 @@ We start by illustrating the possibility of autonomously reconstructing complex 
 The trained policy aims to allow an agent to explore a 3D scene to collect a sequence of 2D RGB and semantic frames and camera poses, that will be used to train the continuous scene representation. Following previous work, we adapt a modular policy composed of a *Mapping* process that builds a *Semantic Map*, a *Global Policy* that outputs a global waypoint from the semantic map as input, and finally, a *Local Policy* that navigates towards the global goal.
 
 <p align="center">
-    <img src="/assets/img/autonerf/policy_figure.png" width="500" />
+    <img src="/assets/img/autonerf/policy_figure.png" width="80%" />
 </p>
 
 ## Reward definitions
@@ -195,24 +195,24 @@ This task is the closest to the evaluation methodology prevalent in the neural f
 
 Below are rendering examples, where the semantic head of the NeRF model was trained with GT semantic labels from the Habitat simulator. The same NeRF model will be used to provide qualitative examples in the next subsections.
 <p align="center">
-    <img src="/assets/img/autonerf/viz_rendering_figure_supp_mat.png" width="700" />
+    <img src="/assets/img/autonerf/viz_rendering_figure_supp_mat.png" width="100%" />
 </p>
 
 
 ### Task 2: Metric Map Estimation
 While rendering quality is linked to perception of the scene, it is not necessarily a good indicator of its structural content, which is crucial for robotic downstream tasks. We evaluate the quality of the estimated structure by translating the continuous representation into a format, which is very widely used in map-and-plan baselines for navigation, a binary top-down (bird's-eye-view=BEV) map storing occupancy and semantic category information and compare it with the ground-truth from the simulator. We evaluate obstacle and semantic maps using accuracy, precision, and recall.
 <p align="center">
-    <img src="/assets/img/autonerf/viz_map_estimation.png" width="600" />
+    <img src="/assets/img/autonerf/viz_map_estimation.png" width="90%" />
 </p>
 
 ### Task 3: Planning
 Using maps for navigation, it is difficult to pinpoint the exact precision required for successful planning, as certain artifacts and noises might not have a strong impact on reconstruction metrics, but could lead to navigation problems, and vice-versa. We perform goal-oriented evaluation and measure to what extent path planning can be done on the obtained top-down maps.
 <p align="center">
-    <img src="/assets/img/autonerf/viz_planning.png" width="600" />
+    <img src="/assets/img/autonerf/viz_planning.png" width="80%" />
 </p>
 
 ### Task 4: Pose Refinement
 This task involves correcting an initial noisy camera position and associated rendered view and optimizing the position until a given ground-truth position is reached, which is given through its associated rendered view only. The optimization process therefore leads to a trajectory in camera pose space. This task is closely linked to visual servoing with a *eye-in-hand* configuration, a standard problem in robotics, in particular in its *direct* variant, where the optimization is directly performed over losses on the observed pixel space.
 <p align="center">
-    <img src="/assets/img/autonerf/camera_pose_refinement_video.gif" width="700" />
+    <img src="/assets/img/autonerf/camera_pose_refinement_video.gif" width="100%" />
 </p>
