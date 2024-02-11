@@ -175,22 +175,201 @@ class CustomDataset(torch.utils.data.Dataset):
                   # index in the dataset.
 ```
 
+{::options parse_block_html="true" /}
+<details><summary markdown="span">**A solution**</summary>
+```python
+import torch
+
+class CustomDataset(torch.utils.data.Dataset):
+    def __init__(self, samples, max_line_len):
+        self.samples = samples
+        self.max_line_len = max_line_len
+
+    def __len__(self):
+        return len(self.samples)
+
+    def __getitem__(self, index):
+        sample_dict = self.samples[index]
+
+        name = lineToTensor(sample_dict["name"])
+        mask = torch.zeros((self.max_line_len))
+        mask[: name.shape[0]] = 1
+        name = torch.cat(
+            [
+                name,
+                torch.zeros(
+                    (self.max_line_len - name.shape[0], name.shape[1], name.shape[2])
+                ),
+            ],
+            dim=0,
+        )
+
+        label = sample_dict["label"]
+        label = torch.Tensor([label])
+        return {"name": name, "label": label, "mask": mask}
+```
+</details>
+<br/>
+{::options parse_block_html="false" /} 
+
 ## Data loading and visualisation
 It is important to visualise the data you will be working on. Moreover, when training and evaluating your model, you will need to load data from your training, validation and test sets respectively. To do so, we will use the [**DataLoader**](https://pytorch.org/tutorials/beginner/basics/data_tutorial.html) class from [**torch.utils.data**](https://pytorch.org/docs/stable/data.html).
 
 Start by **implementing 3 dataloaders** for your training, validation and test sets.
 
+{::options parse_block_html="true" /}
+<details><summary markdown="span">**A solution**</summary>
+```python
+train_dataset = CustomDataset(train_samples, max_line_len)
+val_dataset = CustomDataset(val_samples, max_line_len)
+test_dataset = CustomDataset(test_samples, max_line_len)
+
+batch_size = 16
+train_dataloader = torch.utils.data.DataLoader(
+    train_dataset,
+    batch_size=batch_size,
+    shuffle=True,
+)
+val_dataloader = torch.utils.data.DataLoader(
+    val_dataset,
+    batch_size=batch_size,
+    shuffle=False,
+)
+test_dataloader = torch.utils.data.DataLoader(
+    test_dataset,
+    batch_size=batch_size,
+    shuffle=False,
+)
+```
+</details>
+<br/>
+{::options parse_block_html="false" /}
+
 ## Designing a Recurrent Neural Network
 It is now time to build a RNN from scratch! Write a class inheriting from [**torch.nn.Module**](https://pytorch.org/docs/stable/generated/torch.nn.Module.html). Be careful of the dimensions of input tensors and the dimensions of your desired output. For now, **you cannot use any other layer than** [**nn.Linear**](https://pytorch.org/docs/stable/generated/torch.nn.Linear.html). The goal here is to **implement vanilla recurrent layers from scratch** that take a tensor as input and maintain a hidden vector memory.
 
+{::options parse_block_html="true" /}
+<details><summary markdown="span">**A solution**</summary>
+```python
+import torch.nn as nn
+
+class RNN(nn.Module):
+    def __init__(self, input_size, hidden_size, output_size):
+        super(RNN, self).__init__()
+        self.hidden_size = hidden_size
+        self.i2h = nn.Linear(input_size + hidden_size, hidden_size)
+        self.h2o = nn.Linear(hidden_size, output_size)
+
+    def forward(self, input, hidden):
+        combined = torch.cat((input, hidden), 1)
+        hidden = self.i2h(combined)
+        output = self.h2o(hidden)
+        return output, hidden
+
+    def initHidden(self):
+        return torch.zeros(1, self.hidden_size)
+
+model = RNN(input_size=57, hidden_size=57, output_size=18)
+```
+</details>
+<br/>
+{::options parse_block_html="false" /} 
+
 ## Loss function and optimizer
 The next step is to define a [**loss function**](https://pytorch.org/docs/stable/nn.html#loss-functions) that is suited to the problem. Then you have to choose an [**optimizer**](https://pytorch.org/docs/stable/optim.html). You are encouraged to try different ones to compare them. You can also study the impact of different hyperparameters of the optimizer (learning rate, momentum, etc.)
+
+{::options parse_block_html="true" /}
+<details><summary markdown="span">**A solution**</summary>
+```python
+import torch.optim as optim
+
+criterion = torch.nn.CrossEntropyLoss()
+optimizer = optim.Adam(model.parameters(), lr=1e-3)
+```
+</details>
+<br/>
+{::options parse_block_html="false" /} 
 
 ## Training loop
 It is now to time to write the code for **training and validating your model**. You must iterate through your training data using your dataloader, and compute forward and backward passes on given data batches.
 Don't forget to log your training as well as validation losses (the latter is mainly used to tune hyperparameters).
 
 **Be careful: Unlike for CNNs in the previous practical session, the forward pass here will be iterative as you RNN will take as input one character at a time! You need to propagate you hidden state/memory along time.**
+
+{::options parse_block_html="true" /}
+<details><summary markdown="span">**A solution**</summary>
+```python
+from tqdm import tqdm
+
+def forward_pass(name, mask, model):
+    out = [None] * name.shape[0]
+    hidden = torch.zeros(name.shape[0], 57)
+    for i in range(name.shape[1]):
+        character = name[:, i].squeeze(1)
+        out_, hidden = model(character, hidden)
+
+        for batch_id in range(name.shape[0]):
+            if mask[batch_id, i] == 1:
+                out[batch_id] = out_[batch_id].unsqueeze(0)
+    out = torch.cat(out, dim=0)
+    return out
+
+
+def train_val(run_type, criterion, dataloader, model, optimizer):
+    tot_loss = 0.0
+    tot_acc = []
+    for mb_idx, batch in tqdm(enumerate(dataloader)):
+        name = batch["name"]
+        label = batch["label"].squeeze(1).long()
+        mask = batch["mask"]
+
+        if run_type == "train":
+            # zero the parameter gradients
+            optimizer.zero_grad()
+
+        # Forward pass
+        if run_type == "train":
+            out = forward_pass(name, mask, model)
+        elif run_type == "val":
+            with torch.no_grad():
+                out = forward_pass(name, mask, model)
+
+        # Compute loss
+        loss = criterion(out, label)
+
+        if run_type == "train":
+            # Compute gradients
+            loss.backward()
+
+            # Backward pass - model update
+            optimizer.step()
+
+        # Logging
+        tot_loss += loss.item()
+        acc = (out.argmax(dim=1) == label).tolist()
+        tot_acc.extend(acc)
+    return tot_loss, tot_acc, criterion, dataloader, model, optimizer
+
+
+epochs = 10
+for epoch in range(epochs):
+    # Training
+    epoch_loss, epoch_acc, criterion, train_dataloader, model, optimizer = train_val(
+        "train", criterion, train_dataloader, model, optimizer
+    )
+    print(
+        f"Epoch {epoch}: {epoch_loss/len(train_dataloader)}, {np.array(epoch_acc).mean()}"
+    )
+
+    # Validation
+    val_loss, val_acc, criterion, val_dataloader, model, optimizer = train_val(
+        "val", criterion, val_dataloader, model, optimizer
+    )
+    print(f"Val: {val_loss/len(val_dataloader)}, {np.array(val_acc).mean()}")
+```
+</details>
+<br/>
+{::options parse_block_html="false" /} 
 
 ## Visualizing your training with Tensorboard
 A useful tool to visualize your training is [**Tensorboard**](https://www.tensorflow.org/tensorboard/). You can also have a look at solutions such as [**Weights & Biases**](https://wandb.ai/site), but we will focus on the simpler Tensorboard for now.

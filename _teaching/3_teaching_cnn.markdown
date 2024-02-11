@@ -37,7 +37,7 @@ The lecture slides are available [here](https://pierremarza.github.io/teaching/l
 
 # 2. Practical
 ## Context
-The goals of this session are to practice with **implementing a Convolutional Neural Network**, **understanding the involved computations**, and more generally, to **build a full Deep Learning pipeline in PyTorch** to train a model on a given dataset.
+The goals of this session are to practice with **implementing a Convolutional Neural Network**, **understanding the involved computations**, and more generally, to **build a full Deep Learning pipeline in PyTorch** to train a model on a given dataset. Some parts of this course are inspired from this great [Pytorch Tutorial](https://pytorch.org/tutorials/beginner/blitz/cifar10_tutorial.html#sphx-glr-beginner-blitz-cifar10-tutorial-py)
 
 ## Installation
 We will be coding with **Python3** and will use the **Pytorch** library.
@@ -286,9 +286,68 @@ class LeNet(torch.nn.Module):
 ## Loss function and optimizer
 The next step is to define a [**loss function**](https://pytorch.org/docs/stable/nn.html#loss-functions) that is suited to the problem you want to solve, in our case **multi-class classification**. Then you have to choose an [**optimizer**](https://pytorch.org/docs/stable/optim.html). You are encouraged to try different ones to compare them. You can also study the impact of different hyperparameters of the optimizer (learning rate, momentum, etc.)
 
+{::options parse_block_html="true" /}
+<details><summary markdown="span">**A solution**</summary>
+```python
+import torch.optim as optim
+
+criterion = torch.nn.CrossEntropyLoss()
+optimizer = optim.SGD(model.parameters(), lr=0.001, momentum=0.9)
+```
+</details>
+<br/>
+{::options parse_block_html="false" /} 
+
 ## Training loop
 It is now to time to write the code for **training and validating your model**. You must iterate through your training data using your dataloader, and compute forward and backward passes on given data batches.
 Don't forget to log your training as well as validation losses (the latter is mainly used to tune hyperparameters).
+
+{::options parse_block_html="true" /}
+<details><summary markdown="span">**A solution**</summary>
+```python
+epochs = 10
+for epoch in range(epochs):
+    logging_loss = 0.0
+    for i, data in enumerate(training_dataloader):
+        input, labels = data
+
+        # zero the parameter gradients
+        optimizer.zero_grad()
+        
+        # Forward pass
+        out = model(input)
+
+        # Compute loss
+        loss = criterion(out, labels)
+
+        # Compute gradients
+        loss.backward()
+
+        # Backward pass - model update
+        optimizer.step()
+
+        logging_loss += loss.item()
+
+        if i % 2000 == 1999:
+            # Logging training loss
+            logging_loss /= 2000
+            print('Training loss epoch ', epoch, ' -- mini-batch ', i, ': ', logging_loss)
+            logging_loss = 0.0
+        
+            # Model validation
+            with torch.no_grad():
+                logging_loss_val = 0.0
+                for data_val in tqdm(valid_dataloader):
+                    input_val, labels_val = data_val
+                    out_val = model(input_val)
+                    loss_val = criterion(out_val, labels_val)
+                    logging_loss_val += loss_val.item()
+                logging_loss_val /= len(valid_dataloader)
+                print('Validation loss: ', logging_loss_val)
+```
+</details>
+<br/>
+{::options parse_block_html="false" /} 
 
 ## Visualizing your training with Tensorboard
 A useful tool to visualize your training is [**Tensorboard**](https://www.tensorflow.org/tensorboard/). You can also have a look at solutions such as [**Weights & Biases**](https://wandb.ai/site), but we will focus on the simpler Tensorboard for now.
@@ -296,6 +355,25 @@ You can easily use Tensorboard with Pytorch by looking at [**torch.utils.tensorb
 
 ## Saving and loading a Pytorch model
 Once training is completed, it can be useful to save the weights of your neural network to use it later. The following [tutorial](https://pytorch.org/tutorials/beginner/basics/saveloadrun_tutorial.html) explains how you can do this. Now, try to save and then load your trained model.
+
+{::options parse_block_html="true" /}
+<details><summary markdown="span">**A solution**</summary>
+```python
+path = './le_net_cifar10.pth'
+
+# Saving model
+torch.save(model.state_dict(), path)
+
+# Loading model
+trained_model = LeNet()
+trained_model.load_state_dict(torch.load(path))
+
+# To use it for inference only, you might want to pass your model in eval mode
+trained_model.eval()
+```
+</details>
+<br/>
+{::options parse_block_html="false" /} 
 
 ## Testing your model
 You must now **evaluate the performance of your trained model** on the **test set**. To this end, you have to iterate through test samples, and perform forward passes on given data batches. You might want to compute the **test loss**, but also any **accuracy-related metrics** you are interested in. You could also **visualize some test samples** along with the **output distribution of your model**.
