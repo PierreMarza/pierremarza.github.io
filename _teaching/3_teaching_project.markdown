@@ -1,8 +1,8 @@
 ---
 layout: distill
 title: Artificial Intelligence & Data Analysis
-description: Deep Learning project
-date: 2024-03-07
+description: Group project
+date: 2024-03-11
 
 authors:
   - name: Pierre Marza

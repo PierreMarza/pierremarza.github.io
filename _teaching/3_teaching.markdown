@@ -11,5 +11,4 @@ category: 2024
 
 ## [Recurrent Neural Networks](https://pierremarza.github.io/teaching/3_teaching_rnn/)
 
-## [Project]()
-
+## [Project](https://pierremarza.github.io/teaching/3_teaching_project/)
