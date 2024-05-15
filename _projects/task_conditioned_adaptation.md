@@ -46,7 +46,7 @@ _styles: >
 
 ---
 
-[**Paper**](){: .btn}
+[**Paper**](https://arxiv.org/abs/2402.07739){: .btn}
 
 <img src="/assets/img/task_conditioned_adaptation/teaser_gif.gif" width="100%" />
 
