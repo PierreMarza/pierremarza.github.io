@@ -47,11 +47,16 @@ _styles: >
 ---
 
 [**Paper**](https://arxiv.org/abs/2402.07739){: .btn}
+[**CVPR 2024 poster**](/assets/img/task_conditioned_adaptation/cvpr2024_poster.pdf){: .btn}
+[**CVPR 2024 video**](https://youtu.be/bqqhnieHz4Q){: .btn}
 
 <img src="/assets/img/task_conditioned_adaptation/teaser_gif.gif" width="100%" />
 
 ## Abstract
 Successfully addressing a wide variety of tasks is a core ability of autonomous agents, which requires flexibly adapting the underlying decision-making strategies and, as we argue in this work, also adapting the underlying perception modules. An analogical argument would be the human visual system, which uses top-down signals to focus attention determined by the current task. Similarly, in this work, we adapt pre-trained large vision models conditioned on specific downstream tasks in the context of multi-task policy learning. We introduce task-conditioned adapters that do not require finetuning any pre-trained weights, combined with a single policy trained with behavior cloning and capable of addressing multiple tasks. We condition the policy and visual adapters on task embeddings, which can be selected at inference if the task is known, or alternatively inferred from a set of example demonstrations. To this end, we propose a new optimization-based estimator. We evaluate the method on a wide variety of tasks of the CortexBench benchmark and show that, compared to existing work, it can be addressed with a single policy. In particular, we demonstrate that adapting visual features is a key design choice and that the method generalizes to unseen tasks given visual demonstrations.
+
+<iframe width="100%" height="395" src="https://www.youtube.com/embed/bqqhnieHz4Q" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+</iframe>
 
 ## Task-conditioned adaptation
 ### Setup
