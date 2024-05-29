@@ -1,7 +1,7 @@
 ---
 layout: distill
 title: "Task-conditioned adaptation of visual features in multi-task policy learning"
-description:
+description: CVPR 2024
 date: 2024-02-09
 category: Research projects
 img: /assets/img/task_conditioned_adaptation/teaser_figure.png
