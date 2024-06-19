@@ -2,7 +2,7 @@
 layout: distill
 title: "Task-conditioned adaptation of visual features in multi-task policy learning"
 description: CVPR 2024
-date: 2024-02-09
+date: 2024-06-19
 category: Research projects
 img: /assets/img/task_conditioned_adaptation/teaser_figure.png
 
@@ -47,6 +47,7 @@ _styles: >
 ---
 
 [**Paper**](https://arxiv.org/abs/2402.07739){: .btn}
+[**Code**](https://github.com/PierreMarza/task_conditioned_adaptation){: .btn}
 [**CVPR 2024 poster**](/assets/img/task_conditioned_adaptation/cvpr2024_poster.pdf){: .btn}
 [**CVPR 2024 video**](https://youtu.be/bqqhnieHz4Q){: .btn}
 
