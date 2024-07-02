@@ -1,7 +1,7 @@
 ---
 layout: distill
 title: "AutoNeRF: Training Implicit Scene Representations with Autonomous Agents"
-description:
+description: IROS 2024
 date: 2023-10-01
 category: Research projects
 img: /assets/img/autonerf/teaser_figure.png

@@ -11,16 +11,18 @@
   year={2024},
   pdf={https://arxiv.org/abs/2402.07739},
   html={https://pierremarza.github.io/projects/task_conditioned_adaptation/},
+  code={https://github.com/PierreMarza/task_conditioned_adaptation},
   selected={true}
 }
 
 @article{marza2023autonerf,
   bibtex_show={true},
+  abbr={IROS},
   title={AutoNeRF: Training Implicit Scene Representations with Autonomous Agents},
   author={Marza, Pierre and Matignon, Laetitia and Simonin, Olivier and Batra, Dhruv and Wolf, Christian and Chaplot, Devendra Singh},
   abstract={Implicit representations such as Neural Radiance Fields (NeRF) have been shown to be very effective at novel view synthesis. However, these models typically require manual and careful human data collection for training. In this paper, we present AutoNeRF, a method to collect data required to train NeRFs using autonomous embodied agents. Our method allows an agent to explore an unseen environment efficiently and use the experience to build an implicit map representation autonomously. We compare the impact of different exploration strategies including handcrafted frontier-based exploration and modular approaches composed of trained high-level planners and classical low-level path followers. We train these models with different reward functions tailored to this problem and evaluate the quality of the learned representations on four different downstream tasks: classical viewpoint rendering, map reconstruction, planning, and pose refinement. Empirical results show that NeRFs can be trained on actively collected data using just a single episode of experience in an unseen environment, and can be used for several downstream robotic tasks, and that modular trained exploration models significantly outperform the classical baselines.},
-  journal={arXiv},
-  year={2023},
+  journal={International Conference on Intelligent Robots and Systems (IROS)},
+  year={2024},
   pdf={https://arxiv.org/abs/2304.11241},
   html={https://pierremarza.github.io/projects/autonerf/},
   code={https://github.com/PierreMarza/autonerf},
@@ -41,16 +43,6 @@
   selected={true}
 }
 
-@article{marza2022vision_vqa,
-  bibtex_show={true},
-  author={Marza, Pierre and Kervadec, Corentin and Antipov, Grigory and Baccouche, Moez and Wolf, Christian},
-  abstract= {As in many tasks combining vision and language, both modalities play a crucial role in Visual Question Answering (VQA). To properly solve the task, a given model should both understand the content of the proposed image and the nature of the question. While the fusion between modalities, which is another obviously important part of the problem, has been highly studied, the vision part has received less attention in recent work. Current state-of-the-art methods for VQA mainly rely on off-the-shelf object detectors delivering a set of object bounding boxes and embeddings, which are then combined with question word embeddings through a reasoning module. In this paper, we propose an in-depth study of the vision-bottleneck in VQA, experimenting with both the quantity and quality of visual objects extracted from images. We also study the impact of two methods to incorporate the information about objects necessary for answering a question, in the reasoning module directly, and earlier in the object selection stage. This work highlights the importance of vision in the context of VQA, and the interest of tailoring vision methods used in VQA to the task at hand.},
-  title={An experimental study of the vision-bottleneck in VQA},
-  journal={arXiv},
-  year={2022},
-  pdf={https://arxiv.org/abs/2202.06858}
-}
-
 @article{marza2022teaching,
   bibtex_show={true},
   abbr={IROS},
@@ -66,6 +58,16 @@
   pdf={https://arxiv.org/abs/2107.06011},
   code={https://github.com/PierreMarza/teaching_agents_how_to_map},
   selected={true}
+}
+
+@article{marza2022vision_vqa,
+  bibtex_show={true},
+  author={Marza, Pierre and Kervadec, Corentin and Antipov, Grigory and Baccouche, Moez and Wolf, Christian},
+  abstract= {As in many tasks combining vision and language, both modalities play a crucial role in Visual Question Answering (VQA). To properly solve the task, a given model should both understand the content of the proposed image and the nature of the question. While the fusion between modalities, which is another obviously important part of the problem, has been highly studied, the vision part has received less attention in recent work. Current state-of-the-art methods for VQA mainly rely on off-the-shelf object detectors delivering a set of object bounding boxes and embeddings, which are then combined with question word embeddings through a reasoning module. In this paper, we propose an in-depth study of the vision-bottleneck in VQA, experimenting with both the quantity and quality of visual objects extracted from images. We also study the impact of two methods to incorporate the information about objects necessary for answering a question, in the reasoning module directly, and earlier in the object selection stage. This work highlights the importance of vision in the context of VQA, and the interest of tailoring vision methods used in VQA to the task at hand.},
+  title={An experimental study of the vision-bottleneck in VQA},
+  journal={arXiv},
+  year={2022},
+  pdf={https://arxiv.org/abs/2202.06858}
 }
 
 @article{moran2021patent,
