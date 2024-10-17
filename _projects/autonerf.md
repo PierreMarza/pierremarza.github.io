@@ -58,10 +58,15 @@ _styles: >
 [**Code**](https://github.com/PierreMarza/autonerf){: .btn}
 [**NeRF4ADR Workshop (ICCV 2023) poster**](/assets/img/autonerf/nerf4adr_poster.pdf){: .btn}
 
+[**IROS 2024 video**](https://youtu.be/CJz2_pAeSKk){: .btn}
+
 ## Abstract
 Implicit representations such as Neural Radiance Fields (NeRF) have been shown to be very effective at novel view synthesis. However, these models typically require manual and careful human data collection for training. In this paper, we present AutoNeRF, a method to collect data required to train NeRFs using autonomous embodied agents. Our method allows an agent to explore an unseen environment efficiently and use the experience to build an implicit map representation autonomously. We compare the impact of different exploration strategies including handcrafted frontier-based exploration and modular approaches composed of trained high-level planners and classical low-level path followers. We train these models with different reward functions tailored to this problem and evaluate the quality of the learned representations on four different downstream tasks: classical viewpoint rendering, map reconstruction, planning, and pose refinement. Empirical results show that NeRFs can be trained on actively collected data using just a single episode of experience in an unseen environment, and can be used for several downstream robotic tasks, and that modular trained exploration models significantly outperform the classical baselines.
 
 <img src="/assets/img/autonerf/teaser_video.gif" width="100%" />
+
+<iframe width="100%" height="395" src="https://www.youtube.com/embed/CJz2_pAeSKk" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+</iframe>
 
 ## Reconstructing house-scale scenes
 We start by illustrating the possibility of autonomously reconstructing complex large-scale environments such as apartments or houses from the continuous representations trained on data collected by agents exploring a scene using a modular policy. You can visualize RGB and semantics meshes (extracted from NeRF models) of 5 scenes from the Gibson val set. The semantics head of the NeRF models was trained with GT labels from the Habitat simulator.
