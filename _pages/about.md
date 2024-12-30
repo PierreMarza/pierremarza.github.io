@@ -6,7 +6,7 @@ description: PhD Student - Visual Navigation, Computer Vision, Deep Learning, Re
 
 profile:
   align: right
-  image: photo_profil.jpg
+  image: profile_picture.jpg
 
 news: true  # includes a list of news items
 selected_papers: true # includes a list of papers marked as "selected={true}"
