@@ -11,7 +11,7 @@
   Pierre  Marza
 
 
-  | blog
+  | Sim2Real Domain Transfer
 
 </title>
 <meta name="description" content="A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
@@ -38,7 +38,7 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22></text></svg>">
 
 <link rel="stylesheet" href="/assets/css/main.css">
-<link rel="canonical" href="/blog/">
+<link rel="canonical" href="/projects/1_project/">
 
 <!-- JQuery -->
 <!-- jQuery -->
@@ -115,8 +115,6 @@
           
           
           
-          
-          
           <li class="nav-item ">
               <a class="nav-link" href="/challenges/">
                 Challenges
@@ -179,56 +177,26 @@
     <div class="container mt-5">
       <div class="post">
 
-  <div class="header-bar">
-    <h1></h1>
-    <h2></h2>
-  </div>
+  <header class="post-header">
+    <h1 class="post-title">Sim2Real Domain Transfer</h1>
+    <p class="post-description">We studied Sim2Real Domain Transfer in the context of Visual Navigation.</p>
+  </header>
 
+  <article>
+    <p><strong>Date:</strong> 2019–2020</p>
 
-  <ul class="post-list">
-    
-      <li>
-        <h3><a class="post-title" href="/2021/05/22/distill.html">a distill-style blog post</a></h3>
-        <p class="post-meta">May 22, 2021</p>
-        <p>an example of a distill-style blog post and main elements</p>
-      </li>
-    
-      <li>
-        <h3><a class="post-title" href="/2020/09/28/github-metadata.html">a post with github metadata</a></h3>
-        <p class="post-meta">September 28, 2020</p>
-        <p>a quick run down on accessing github metadata.</p>
-      </li>
-    
-      <li>
-        <h3><a class="post-title" href="/2020/09/28/twitter.html">a post with twitter</a></h3>
-        <p class="post-meta">September 28, 2020</p>
-        <p>an example of a blog post with twitter</p>
-      </li>
-    
-  </ul>
+<p><strong>Advisor:</strong> <a href="https://perso.liris.cnrs.fr/christian.wolf/">Christian Wolf</a>, INSA Lyon, France</p>
 
-  
-<nav aria-label="Blog page naviation">
-  <ul class="pagination pagination-lg justify-content-center">
-    <li class="page-item disabled">
-      <a class="page-link" href="" tabindex="-1" aria-disabled="">Newer</a>
-    </li>
-    
-      
-        <li class="page-item active"><a class="page-link" href="/blog/index.html" title="blog">1</a></li>
-      
-        <li class="page-item "><a class="page-link" href="/blog/page/2/index.html" title="blog - page 2">2</a></li>
-      
-        <li class="page-item "><a class="page-link" href="/blog/page/3/index.html" title="blog - page 3">3</a></li>
-      
-    
-    <li class="page-item ">
-      <a class="page-link" href="/blog/page/2/">Older</a>
-    </li>
-  </ul>
-</nav>
+<p>Training agents that perform Visual Navigation tasks can be done with Deep Reinforcement Learning. In such case, leveraging simulated environments has several advantages, such as training speed or safety. However, when deployed in the real world, these agents can suffer from the well-known Sim2Real gap.</p>
 
+<p>In this Master’s research project, we studied this Sim2Real gap, by collecting a dataset of aligned RGB-D pairs between the camera of a real robot and a scanned version of the environment it involves in (leveraging the Habit Simulator from FAIR). We also experimented with different methods to try to close this gap.</p>
 
+<p><strong>Abstract:</strong>
+The robot navigation task in a known or unknown envi-ronment is a trending subject in the Computer Vision field.Various  studies  showed  promising  results  with  Reinforce-ment Learning, often coupled with Deep Learning methods.However, these approaches usually require extensive train-ing to be done with the robot in the anticipated environment.The field experimented with Simulated Environment Learn-ing as it allows for very fast bootstrapping and learning.This specific task requires then to use the learned model ina real environment.  An efficient way to close the gap be-tween simulated and real data distributions is through Do-main Transfer, i.e.  methods trying to build models that arerobust to a change of characteristics inside the considereddata.  In this paper, we provide a comparison between sev-eral state-of-the-art approaches to reduce Domain Shift inthe  case  of  our  Robot  Navigation  task.   We  focus  on  ad-versarial methods, leveraging the generative capabilities ofthe Variational AutoEncoder and CycleGAN architecturesto learn general latent representations.  Unsupervised Do-main Adaptation for robot pose estimation is also experi-mented. The experiments are to be done on CITI’s providedrobot  equipped  with  a  Microsoft  Kinect  video  and  depthsensor.   We  thus  introduce  CITI-Sim2Real,  a  new  datasetadapted to our problem.</p>
+
+<p>A report summarizing our work can be found <a href="/assets/pdf/P_SAT.pdf">here</a>.</p>
+
+  </article>
 
 </div>
 
