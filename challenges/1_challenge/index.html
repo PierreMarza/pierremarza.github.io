@@ -11,7 +11,7 @@
   Pierre  Marza
 
 
-  | blog
+  | MultiON Challenge at CVPR 2021
 
 </title>
 <meta name="description" content="A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
@@ -38,7 +38,7 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22></text></svg>">
 
 <link rel="stylesheet" href="/assets/css/main.css">
-<link rel="canonical" href="/blog/">
+<link rel="canonical" href="/challenges/1_challenge/">
 
 <!-- JQuery -->
 <!-- jQuery -->
@@ -115,8 +115,6 @@
           
           
           
-          
-          
           <li class="nav-item ">
               <a class="nav-link" href="/challenges/">
                 Challenges
@@ -179,56 +177,45 @@
     <div class="container mt-5">
       <div class="post">
 
-  <div class="header-bar">
-    <h1></h1>
-    <h2></h2>
-  </div>
+  <header class="post-header">
+    <h1 class="post-title">MultiON Challenge at CVPR 2021</h1>
+    <p class="post-description">Our solution ranked first at the Multi-Object Navigation Challenge for Embodied AI Workshop at CVPR 2021!</p>
+  </header>
 
+  <article>
+    <p><strong>Date:</strong> February, 2021</p>
 
-  <ul class="post-list">
-    
-      <li>
-        <h3><a class="post-title" href="/2021/05/22/distill.html">a distill-style blog post</a></h3>
-        <p class="post-meta">May 22, 2021</p>
-        <p>an example of a distill-style blog post and main elements</p>
-      </li>
-    
-      <li>
-        <h3><a class="post-title" href="/2020/09/28/github-metadata.html">a post with github metadata</a></h3>
-        <p class="post-meta">September 28, 2020</p>
-        <p>a quick run down on accessing github metadata.</p>
-      </li>
-    
-      <li>
-        <h3><a class="post-title" href="/2020/09/28/twitter.html">a post with twitter</a></h3>
-        <p class="post-meta">September 28, 2020</p>
-        <p>an example of a blog post with twitter</p>
-      </li>
-    
-  </ul>
+<h2 id="multi-object-navigation">Multi-Object Navigation</h2>
+<p>The Multi-Object Navigation (MultiON) task was introduced in <a href="https://arxiv.org/abs/2012.03912">this paper</a>. The goal is for an agent initialized in an unknown photorealistic scene to reach a sequence of target external objects randomly placed within the environment.</p>
 
-  
-<nav aria-label="Blog page naviation">
-  <ul class="pagination pagination-lg justify-content-center">
-    <li class="page-item disabled">
-      <a class="page-link" href="" tabindex="-1" aria-disabled="">Newer</a>
-    </li>
-    
-      
-        <li class="page-item active"><a class="page-link" href="/blog/index.html" title="blog">1</a></li>
-      
-        <li class="page-item "><a class="page-link" href="/blog/page/2/index.html" title="blog - page 2">2</a></li>
-      
-        <li class="page-item "><a class="page-link" href="/blog/page/3/index.html" title="blog - page 3">3</a></li>
-      
-    
-    <li class="page-item ">
-      <a class="page-link" href="/blog/page/2/">Older</a>
-    </li>
-  </ul>
-</nav>
+<p><strong>Why is MultiON interesting ?</strong></p>
+<ul>
+  <li>A sequential task is interesting as it requires the agent to remember and to map potential objects it might have seen while exploring the environment, as reasoning on them might be required in a later stage.</li>
+  <li>Using external objects as goals prevents the agent from leveraging knowledge about the environment layouts, thus focusing solely on memory.</li>
+</ul>
 
+<h2 id="multion-challenge">MultiON Challenge</h2>
+<p>The <a href="http://multion-challenge.cs.sfu.ca/">MultiON Challenge</a> was organized as part of the <a href="https://embodied-ai.org/">Embodied AI Workshop</a> at CVPR 2021. The Leaderboard can be found on the Challenge Website.</p>
 
+<p>For more details, watch the <a href="https://www.youtube.com/watch?v=ghX5UDWD1HU">video</a> presenting the Competition and the results during the workshop.</p>
+
+<p><strong>Our solution</strong></p>
+
+<p>Our solution (see <a href="https://arxiv.org/abs/2107.06011">paper</a>) won the first place. We introduce auxiliary tasks guiding the learning of spatial reasoning abilities in agents trained with reinforcement learning. More specifically, we show that 
+<!-- mapping capacities can emerge by  --> training agents to predict the distance to, direction towards target objects that were previously seen within the episode, as well as estimating if the current goal to find has already been within the agent’s field of view so far improves significantly the overall performance. Our submission to the Challenge was an agent equipped with projective geometry to map its environment, and trained with our auxiliary objectives.</p>
+
+<p>The video presenting our solution can be found <a href="https://www.youtube.com/watch?v=boDaAORoKho">here</a>.</p>
+
+<!-- <div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        <img class="img-fluid rounded z-depth-1" src="/assets/img/fig_method_gt_dist.pdf" alt="" title="example image"/>
+    </div>
+</div>
+<div class="caption">
+    This image can also have a caption. It's like magic.
+</div> -->
+
+  </article>
 
 </div>
 
