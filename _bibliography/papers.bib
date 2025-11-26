@@ -1,6 +1,44 @@
 ---
 ---
 
+@article{marza2025thunder,
+  bibtex_show={true},
+  abbr={NeurIPS DB Spotlight},
+  title={{THUNDER}: Tile-level Histopathology image UNDERstanding benchmark},
+  author={Marza, Pierre and Fillioux, Leo and Boutaj, Sofi{\`e}ne and Mahatha, Kunal and Desrosiers, Christian and Piantanida, Pablo and Dolz, Jose and Christodoulidis, Stergios and Vakalopoulou, Maria},
+  abstract={Progress in a research field can be hard to assess, in particular when many concurrent methods are proposed in a short period of time. This is the case in digital pathology, where many foundation models have been released recently to serve as feature extractors for tile-level images, being used in a variety of downstream tasks, both for tile- and slide-level problems. Benchmarking available methods then becomes paramount to get a clearer view of the research landscape. In particular, in critical domains such as healthcare, a benchmark should not only focus on evaluating downstream performance, but also provide insights about the main differences between methods, and importantly, further consider uncertainty and robustness to ensure a reliable usage of proposed models. For these reasons, we introduce THUNDER, a tile-level benchmark for digital pathology foundation models, allowing for efficient comparison of many models on diverse datasets with a series of downstream tasks, studying their feature spaces and assessing the robustness and uncertainty of predictions informed by their embeddings. THUNDER is a fast, easy-to-use, dynamic benchmark that can already support a large variety of state-of-the-art foundation, as well as local user-defined models for direct tile-based comparison. In this paper, we provide a comprehensive comparison of 23 foundation models on 16 different datasets covering diverse tasks, feature analysis, and robustness. The code for THUNDER is publicly available at https://github.com/MICS-Lab/thunder.},
+  journal={Neural Information Processing Systems (NeurIPS) D&B Track (Spotlight)},
+  year={2025},
+  pdf={https://arxiv.org/abs/2507.07860},
+  html={https://mics-lab.github.io/thunder/},
+  code={https://github.com/MICS-Lab/thunder},
+  selected={true}
+}
+
+@inproceedings{boutaj2025controllable,
+  bibtex_show={true},
+  abbr={ICCV},
+  title={Controllable Latent Space Augmentation for Digital Pathology},
+  author={Boutaj, Sofi{\`e}ne and Scalbert, Marin and Marza, Pierre and Couzinie-Devy, Florent and Vakalopoulou, Maria and Christodoulidis, Stergios},
+  abstract={Whole slide image (WSI) analysis in digital pathology presents unique challenges due to the gigapixel resolution of WSIs and the scarcity of dense supervision signals. While Multiple Instance Learning (MIL) is a natural fit for slidelevel tasks, training robust models requires large and diverse datasets. Even though image augmentation techniques could be utilized to increase data variability and reduce overfitting, implementing them effectively is not a trivial task. Traditional patch-level augmentation is prohibitively expensive due to the large number of patches extracted from each WSI, and existing feature-level augmentation methods lack control over transformation semantics. We introduce HistAug, a fast and efficient generative model for controllable augmentations in the latent space for digital pathology. By conditioning on explicit patch-level transformations (e.g., hue, erosion), HistAug generates realistic augmented embeddings while preserving initial semantic information. Our method allows the processing of a large number of patches in a single forward pass efficiently, while at the same time consistently improving MIL model performance. Experiments across multiple slide-level tasks and diverse organs show that HistAug outperforms existing methods, particularly in low-data regimes. Ablation studies confirm the benefits of learned transformations over noise-based perturbations and highlight the importance of uniform WSI-wise augmentation. Code is available at https://github.com/MICS-Lab/HistAug.},
+  booktitle={International Conference on Computer Vision (ICCV)},
+  year={2025},
+  pdf={https://arxiv.org/abs/2508.14588},
+  code={https://github.com/MICS-Lab/HistAug},
+  selected={true}
+}
+
+@article{belagali2025cdg,
+  bibtex_show={true},
+  abbr={arXiv},
+  title={CDG-MAE: Learning Correspondences from Diffusion Generated Views},
+  author={Belagali, Varun and Marza, Pierre and Yellapragada, Srikar and Li, Zilinghan and Nandi, Tarak Nath and Madduri, Ravi K and Saltz, Joel and Christodoulidis, Stergios and Vakalopoulou, Maria and Samaras, Dimitris},
+  abstract={Learning dense correspondences, critical for application such as video label propagation, is hindered by tedious and unscalable manual annotation. Self-supervised methods address this by using a cross-view pretext task, often modeled with a masked autoencoder, where a masked target view is reconstructed from an anchor view. However, acquiring effective training data remains a challenge - collecting diverse video datasets is difficult and costly, while simple image crops lack necessary pose variations. This paper introduces CDG-MAE, a novel MAE-based self-supervised method that uses diverse synthetic views generated from static images via an image-conditioned diffusion model. These generated views exhibit substantial changes in pose and perspective, providing a rich training signal that overcomes the limitations of video and crop-based anchors. We present a quantitative method to evaluate local and global consistency of generated images, discussing their use for cross-view self-supervised pretraining. Furthermore, we enhance the standard single-anchor MAE setting to a multi-anchor strategy to effectively modulate the difficulty of pretext task. CDG-MAE significantly outperforms state-of-the-art MAE methods reliant only on images and substantially narrows the performance gap to video-based approaches.},
+  journal={arXiv preprint arXiv:2506.18164},
+  year={2025},
+  pdf={https://arxiv.org/abs/2506.18164},
+}
+
 @phdthesis{marza2024learning,
   bibtex_show={true},
   abbr={PhD thesis},
@@ -39,7 +77,6 @@
   pdf={https://arxiv.org/abs/2304.11241},
   html={https://pierremarza.github.io/projects/autonerf/},
   code={https://github.com/PierreMarza/autonerf},
-  selected={true}
 }
 
 @article{marza2023dynamic_impl_repr,
@@ -53,7 +90,6 @@
   html={https://pierremarza.github.io/projects/dynamic_implicit_representations/},
   pdf={https://arxiv.org/abs/2210.05129},
   code={https://github.com/PierreMarza/dynamic_implicit_representations},
-  selected={true}
 }
 
 @article{marza2022teaching,
@@ -70,7 +106,6 @@
   html={https://pierremarza.github.io/projects/teaching_agents_how_to_map/},
   pdf={https://arxiv.org/abs/2107.06011},
   code={https://github.com/PierreMarza/teaching_agents_how_to_map},
-  selected={true}
 }
 
 @article{marza2022vision_vqa,
@@ -101,5 +136,4 @@ booktitle = {Computer Vision and Pattern Recognition (CVPR)},
 year = {2020},
 pdf={https://openaccess.thecvf.com/content_CVPR_2020/html/Moran_DeepLPF_Deep_Local_Parametric_Filters_for_Image_Enhancement_CVPR_2020_paper.html},
 code={https://github.com/sjmoran/DeepLPF},
-selected={true}
 }
