@@ -96,9 +96,6 @@ collections:
       layout: post
     output: true
     permalink: /news/:path/
-  challenges:
-    output: true
-    permalink: /challenges/:path/
   teaching:
     output: true
     permalink: /teaching/:path/
@@ -190,8 +187,6 @@ enable_tooltips:            false  # enables automatic tooltip links generated
 enable_darkmode:            true   # enables switching between light/dark modes
 enable_navbar_social:       false  # enables displaying social links in the
                                    # navbar on the about page
-enable_challenge_categories:  true   # enables categorization of challenges into
-                                   # multiple categories
 enable_teaching_categories:   true
 enable_projects_categories:   true
 enable_medium_zoom:         true   # enables image zoom feature (as on medium.com)
