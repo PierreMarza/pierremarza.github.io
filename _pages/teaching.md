@@ -2,10 +2,9 @@
 layout: page
 permalink: /teaching/
 title: Teaching
-description: Materials for taught courses.
+description:
 nav: true
-# years: [2021]
-display_categories: [2021, 2023, 2024]
+display_categories: [2026, 2025, 2024, 2023, 2021]
 horizontal: false
 ---
 
