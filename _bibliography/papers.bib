@@ -1,9 +1,82 @@
 ---
 ---
 
+@article{charki2026carmil,
+  abbr={ECCV},
+  title={CAR-MIL: Counterfactual Attention Regularization for Multiple Instance Learning},
+  author={Chraki, Imane and Marza, Pierre and Christodoulidis, Stergios and Vakalopoulou, Maria},
+  journal={European Conference on Computer Vision (ECCV)},
+  year={2026},
+}
+
+@article{boutaj2026patches,
+  bibtex_show={true},
+  abbr={MICCAI (Early Accept)},
+  title={From Patches to Patients: A study of the tile-to-slide performance transferability in Digital Pathology},
+  author={Boutaj, Sofi{\`e}ne and Fillioux, Leo and Vakalopoulou, Maria and Christodoulidis, Stergios and Marza, Pierre},
+  abstract={Foundation Models (FMs) have recently redefined the state-of-the-art in histopathology by providing robust representations for whole-slide image (WSI) analysis. However, selecting the optimal foundation model (FM) for a specific clinical cohort currently requires multiple preprocessing steps, followed by computationally expensive feature extraction and the training of a Multiple Instance Learning (MIL) aggregator for every model. In this work, we investigate whether efficient tile-level linear probing can serve as a reliable proxy for slide-level performance, reducing the need to run full slide-level pipelines for every candidate encoder. We benchmark 19 state-of-the-art FMs on 42 slide-level and 16 tile-level tasks, comparing tile probing metrics against slide-level outcomes using ABMIL and Mean Pooling aggregations. We observe a high correlation between tile and slide performance across varying task difficulties, indicating that encoder representation quality is the primary determinant of WSI success. Sensitivity analyses show that transferability is stable across models and is more influenced by cohort sizes and numbers of tiles per slide than by average task difficulty. We also measure the agreement in best performing models between tile and slide-level tasks, showing tile benchmarks reliably shortlist strong candidates. Overall, our study indicates that tile-level benchmarking provides an efficient and practical first step for narrowing down candidate models, while slide-level evaluation remains essential for final validation on clinical tasks.},
+  journal={Medical Image Computing and Computer-Assisted Intervention (MICCAI)},
+  year={2026},
+  pdf={https://arxiv.org/abs/2606.10778},
+  selected={true},
+}
+
+@article{xue2026pathologist,
+  abbr={MICCAI},
+  title={Pathologist Attention-Aligned Report Generation for Prostate Histopathology},
+  author={Xue, Ruoyu and Singh, Suryakant and Chakraborty, Souradeep and Marza, Pierre and Yaskiv, Oksana and Constantin, Friedman and Sheuka, Natallia and Friedman, Paul and Ramlal, Bharat and Knudsen, Beatrice and Gupta, Rajarsi and Saltz, Joel and Prasanna, Prateek and Zelinsky, Gregory and Samaras, Dimitris},
+  journal={Medical Image Computing and Computer-Assisted Intervention (MICCAI)},
+  year={2026},
+}
+
+@article{fillioux2026information,
+  bibtex_show={true},
+  abbr={MICCAI},
+  title={Information Maximization for Long-Tailed Semi-Supervised Domain Generalization},
+  author={Fillioux, Leo and Chakraborty, Omprakash and Gop{\'e}e, Quentin and Marza, Pierre and Courn{\`e}de, Paul-Henry and Christodoulidis, Stergios and Vakalopoulou, Maria and Ayed, Ismail Ben and Dolz, Jose},
+  abstract={Semi-supervised domain generalization (SSDG) has recently emerged as an appealing alternative to tackle domain generalization when labeled data is scarce but unlabeled samples across domains are abundant. In this work, we identify an important limitation that hampers the deployment of state-of-the-art methods on more challenging but practical scenarios. In particular, state-of-the-art SSDG severely suffers in the presence of long-tailed class distributions, an arguably common situation in real-world settings. To alleviate this limitation, we propose IMaX, a simple yet effective objective based on the well-known InfoMax principle adapted to the SSDG scenario, where the Mutual Information (MI) between the learned features and latent labels is maximized, constrained by the supervision from the labeled samples. Our formulation integrates an {\alpha}-entropic objective, which mitigates the class-balance bias encoded in the standard marginal entropy term of the MI, thereby better handling arbitrary class distributions. IMaX can be seamlessly plugged into recent state-of-the-art SSDG, consistently enhancing their performance, as demonstrated empirically across two different image modalities.},
+  journal={Medical Image Computing and Computer-Assisted Intervention (MICCAI)},
+  year={2026},
+  pdf={https://arxiv.org/abs/2603.08434},
+}
+
+@inproceedings{chraki2026counterfactual,
+  bibtex_show={true},
+  abbr={MIDL},
+  title={Counterfactual Intervention in Attention Multiple Instance Learning For Digital Pathology},
+  author={Chraki, Imane and Marza, Pierre and Christodoulidis, Stergios and Vakalopoulou, Maria},
+  abstract={Attention-based Multiple Instance Learning (MIL) has become a prominent framework for analysing whole-slide images (WSI). These models have been shown to achieve good performance on classification tasks, while also offering an inherent proxy for interpretability through attention weights. In this work, we first question the validity of using attention for the interpretability of MIL models. Subsequently, we propose Counterfactual Intervention in Attention for MIL (CIA-MIL), a causal extension of attention-based MIL that explicitly measures and optimizes the contribution of attention to slide-level predictions. Across four histopathology classification benchmarks (BRCA, NSCLC, LUAD, Camelyon16) and two feature encoders (Resnet50, UNI), we investigate how the interpretability of attention relates to the representation space, and the downstream performance. We then show that CIA-MIL achieves performance comparable to strong MIL baselines while providing a more causally meaningful attention vector for explaining the model’s outcome. Qualitative perturbation experiments show that dropping the top-attended patches leads to a larger confidence degradation in CIA-MIL compared to baseline ABMIL, highlighting the potential of causal supervision for reliable and interpretable WSI-based prediction.},
+  booktitle={Medical Imaging with Deep Learning (MIDL)},
+  year={2026},
+  pdf={https://openreview.net/pdf?id=s5qMD7LKEI},
+}
+
+@inproceedings{belagali2026ticon,
+  bibtex_show={true},
+  abbr={CVPR Findings},
+  title={Ticon: A slide-level tile contextualizer for histopathology representation learning},
+  author={Belagali, Varun and Kapse, Saarthak and Marza, Pierre and Das, Srijan and Li, Zilinghan and Boutaj, Sofi{\`e}ne and Pati, Pushpak and Yellapragada, Srikar and Nandi, Tarak Nath and Madduri, Ravi K and others},
+  abstract={The interpretation of small tiles in large whole slide images (WSI) often needs a larger image context. We introduce TICON, a transformer-based tile representation contextualizer that produces rich, contextualized embeddings for any application in computational pathology. Standard tile encoder-based pipelines, which extract embeddings of tiles stripped from their context, fail to model the rich slide-level information essential for both local and global tasks. Furthermore, different tile-encoders excel at different downstream tasks. Therefore, a unified model is needed to contextualize embeddings derived from any tile-level foundation model. TICON addresses this need with a single, shared encoder, pretrained using a masked modeling objective to simultaneously unify and contextualize representations from diverse tile-level pathology foundation models. Our experiments demonstrate that TICON-contextualized embeddings significantly improve performance across many different tasks, establishing new state-of-the-art results on tile-level benchmarks (i.e., HEST-Bench, THUNDER, CATCH) and slide-level benchmarks (i.e., Patho-Bench). Finally, we pretrain an aggregator on TICON to form a slide-level foundation model, using only 11K WSIs, outperforming SoTA slide-level foundation models pretrained with up to 350K WSIs.},
+  booktitle={Computer Vision and Pattern Recognition (CVPR) Findings},
+  year={2026},
+  pdf={https://arxiv.org/abs/2512.21331},
+  html={https://cvlab-stonybrook.github.io/TICON/},
+  code={https://github.com/cvlab-stonybrook/TICON},
+  selected={true}
+}
+
+@article{mahatha2026octopus,
+  bibtex_show={true},
+  title={OCTOPUS: Enhancing the Spatial-Awareness of Vision SSMs with Multi-Dimensional Scans and Traversal Selection},
+  author={Mahatha, Kunal and Bahri, Ali and Marza, Pierre and Dastani, Sahar and Vakalopoulou, Maria and Christodoulidis, Stergios and Dolz, Jose and Desrosiers, Christian},
+  journal={arXiv},
+  year={2026},
+  pdf={https://arxiv.org/abs/2602.00904},
+}
+
 @article{marza2025thunder,
   bibtex_show={true},
-  abbr={NeurIPS DB Spot.},
+  abbr={NeurIPS D&B (Spotlight)},
   title={{THUNDER}: Tile-level Histopathology image UNDERstanding benchmark},
   author={Marza, Pierre and Fillioux, Leo and Boutaj, Sofi{\`e}ne and Mahatha, Kunal and Desrosiers, Christian and Piantanida, Pablo and Dolz, Jose and Christodoulidis, Stergios and Vakalopoulou, Maria},
   abstract={Progress in a research field can be hard to assess, in particular when many concurrent methods are proposed in a short period of time. This is the case in digital pathology, where many foundation models have been released recently to serve as feature extractors for tile-level images, being used in a variety of downstream tasks, both for tile- and slide-level problems. Benchmarking available methods then becomes paramount to get a clearer view of the research landscape. In particular, in critical domains such as healthcare, a benchmark should not only focus on evaluating downstream performance, but also provide insights about the main differences between methods, and importantly, further consider uncertainty and robustness to ensure a reliable usage of proposed models. For these reasons, we introduce THUNDER, a tile-level benchmark for digital pathology foundation models, allowing for efficient comparison of many models on diverse datasets with a series of downstream tasks, studying their feature spaces and assessing the robustness and uncertainty of predictions informed by their embeddings. THUNDER is a fast, easy-to-use, dynamic benchmark that can already support a large variety of state-of-the-art foundation, as well as local user-defined models for direct tile-based comparison. In this paper, we provide a comprehensive comparison of 23 foundation models on 16 different datasets covering diverse tasks, feature analysis, and robustness. The code for THUNDER is publicly available at https://github.com/MICS-Lab/thunder.},

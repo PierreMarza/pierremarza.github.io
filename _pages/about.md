@@ -2,7 +2,7 @@
 layout: about
 title: About
 permalink: /
-description: Assistant Professor - Computer Vision, Deep Learning, Medical Imaging
+description: Assistant Professor (Maître de Conférences) - Computer Vision, Deep Learning, Medical Imaging, Digital Pathology
 
 profile:
   align: right
