@@ -22,11 +22,14 @@
 }
 
 @article{xue2026pathologist,
+  bibtex_show={true},
   abbr={MICCAI},
   title={Pathologist Attention-Aligned Report Generation for Prostate Histopathology},
   author={Xue, Ruoyu and Singh, Suryakant and Chakraborty, Souradeep and Marza, Pierre and Yaskiv, Oksana and Constantin, Friedman and Sheuka, Natallia and Friedman, Paul and Ramlal, Bharat and Knudsen, Beatrice and Gupta, Rajarsi and Saltz, Joel and Prasanna, Prateek and Zelinsky, Gregory and Samaras, Dimitris},
+  abstract={The allocation of visual attention by pathologists during cancer diagnosis is a highly selective process that critically shapes the information extracted from whole-slide images (WSIs). Human attention helps medical imaging tasks such as classification and segmentation, and becomes a strong semantic cue for identifying diagnostically informative regions for report generation. In this paper, we introduce human attention into the training of pathologist report generation models. To this end, we collected a multimodal human-attention dataset of 121 prostate WSIs annotated with pathologists' multi-scale viewport trajectories synchronized with the pathologists' verbal descriptions and cursor movements for five clinically relevant components (e.g., Gleason patterns). Using this dataset, we finetune two report generation models with an attention-alignment loss that regularizes the model attention over image patches to match the distribution of pathologist attention. We evaluate our approach on prostate cancer report generation and visual question answering using two models with different internal attention mechanisms (i.e., how image tokens are integrated into the language decoder). Experiments show average gains of 10.9% on NLP-based metrics and 19.3% in accuracy across five clinically relevant report components. Further, model attention maps extracted at inference time, with minimal computational overhead, align more closely with pathologist attention, providing stronger visual support for the generated reports by highlighting the regions that most influence the output.},
   journal={Medical Image Computing and Computer-Assisted Intervention (MICCAI)},
   year={2026},
+  pdf={https://arxiv.org/abs/2607.19624},
 }
 
 @article{fillioux2026information,
@@ -69,6 +72,7 @@
   bibtex_show={true},
   title={OCTOPUS: Enhancing the Spatial-Awareness of Vision SSMs with Multi-Dimensional Scans and Traversal Selection},
   author={Mahatha, Kunal and Bahri, Ali and Marza, Pierre and Dastani, Sahar and Vakalopoulou, Maria and Christodoulidis, Stergios and Dolz, Jose and Desrosiers, Christian},
+  abstract={State space models (SSMs) have recently emerged as an alternative to transformers due to their unique ability of modeling global relationships in text with linear complexity. However, their success in vision tasks has been limited due to their causal formulation, which is suitable for sequential text but detrimental in the spatial domain where causality breaks the inherent spatial relationships among pixels or patches. As a result, standard SSMs fail to capture local spatial coherence, often linking non-adjacent patches while ignoring neighboring ones that are visually correlated. To address these limitations, we introduce OCTOPUS , a novel architecture that preserves both global context and local spatial structure within images, while maintaining the linear complexity of SSMs. OCTOPUS performs discrete reoccurrence along eight principal orientations, going forward or backward in the horizontal, vertical, and diagonal directions, allowing effective information exchange across all spatially connected regions while maintaining independence among unrelated patches. This design enables multi-directional recurrence, capturing both global context and local spatial structure with SSM-level efficiency. In our classification and segmentation benchmarks, OCTOPUS demonstrates notable improvements in boundary preservation and region consistency, as evident from the segmentation results, while maintaining relatively better classification accuracy compared to existing V-SSM based models. These results suggest that OCTOPUS appears as a foundation method for multi-directional recurrence as a scalable and effective mechanism for building spatially aware and computationally efficient vision architectures.},
   journal={arXiv},
   year={2026},
   pdf={https://arxiv.org/abs/2602.00904},
