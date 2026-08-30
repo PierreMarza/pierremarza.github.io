@@ -4,35 +4,28 @@ permalink: /teaching/
 title: Teaching
 description:
 nav: true
-display_categories: [2026, 2025, 2024, 2023, 2021]
-horizontal: false
 ---
 
-<div class="teaching">
-  {% if site.enable_teaching_categories and page.display_categories %}
-  <!-- Display categorized teaching -->
-    {% for category in page.display_categories %}
-      <h2 class="category">{{category}}</h2>
-      {% assign categorized_teaching = site.teaching | where: "category", category %}
-      {% assign sorted_teaching = categorized_teaching | sort: "importance" %}
-      <!-- Generate cards for each teaching -->
-      {% if page.horizontal %}
-        <div class="container">
-          <div class="row row-cols-2">
-          {% for teaching in sorted_teaching %}
-            {% include teaching_horizontal.html %}
-          {% endfor %}
-          </div>
-        </div>
-      {% else %}
-        <div class="grid">
-          {% for teaching in sorted_teaching %}
-            {% include teaching.html %}
-          {% endfor %}
-        </div>
-      {% endif %}
-    {% endfor %}
+##### 2025-2026
 
-  {% endif %}
+- **Introduction to maths and programming**, DU "Mathématiques appliquées au Cancer", CentraleSupélec, Gustave Roussy, IHU PRISM.
+- **AI for oncology projects**, DU "Mathématiques appliquées au Cancer", CentraleSupélec, Gustave Roussy, IHU PRISM.
+- **Reinforcement learning** (Teaching assistant), MSc. DSBA, CentraleSupélec, ESSEC.
+- **Reinforcement learning** (Teaching assistant), MSc. AI, CentraleSupélec.
 
-</div>
+##### 2024-2025
+
+- **Reinforcement learning** (Teaching assistant), MSc. DSBA, CentraleSupélec, ESSEC.
+- **Reinforcement learning** (Teaching assistant), MSc. AI, CentraleSupélec.
+
+##### 2023-2024
+
+- **Artificial intelligence & data analysis**, Université Lyon 1.
+
+##### 2022-2023
+
+- **Introduction to deep learning**, EPITA Lyon.
+
+##### 2021-2022
+
+- **Deep learning and differentiable programming** (Teaching assistant), INSA Lyon.
