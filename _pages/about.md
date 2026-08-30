@@ -2,7 +2,7 @@
 layout: about
 title: About
 permalink: /
-description: Assistant Professor (Maître de Conférences) - Computer Vision, Deep Learning, Medical Imaging, Digital Pathology
+description: <strong>Assistant Professor</strong> (Maître de Conférences) <br> Computer Vision, Deep Learning, Medical Imaging, Digital Pathology <br> <strong>CentraleSupélec</strong>, Université Paris-Saclay
 
 profile:
   align: right
