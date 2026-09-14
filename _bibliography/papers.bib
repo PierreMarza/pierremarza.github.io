@@ -1,14 +1,6 @@
 ---
 ---
 
-@article{charki2026carmil,
-  abbr={ECCV},
-  title={CAR-MIL: Counterfactual Attention Regularization for Multiple Instance Learning},
-  author={Chraki, Imane and Marza, Pierre and Christodoulidis, Stergios and Vakalopoulou, Maria},
-  journal={European Conference on Computer Vision (ECCV)},
-  year={2026},
-}
-
 @article{boutaj2026patches,
   bibtex_show={true},
   abbr={MICCAI (Early Accept)},
@@ -43,6 +35,18 @@
   pdf={https://arxiv.org/abs/2603.08434},
 }
 
+@article{charki2026carmil,
+  bibtex_show={true},
+  abbr={ECCV},
+  title={CAR-MIL: Counterfactual Attention Regularization for Multiple Instance Learning},
+  author={Chraki, Imane and Marza, Pierre and Christodoulidis, Stergios and Vakalopoulou, Maria},
+  abstract={Multiple Instance Learning (MIL) is widely used for weakly supervised learning, particularly in digital pathology, where fine-grained annotations are costly. Most MIL methods aggregate instance features via attention mechanisms. However, attention weights do not always faithfully reflect instance importance and may focus on spuriously correlated regions. In this work, we propose CAR-MIL, a framework that explicitly guides attention learning through a counterfactual attention regularization objective inspired by counterfactual explanations. Built on a standard attention-based MIL architecture, our approach introduces a lightweight counterfactual attention branch trained to produce an alternative prediction while remaining close to the factual attention distribution. This encourages prediction changes to arise from minimal, structured redistributions of attention, leading to more informative evidence allocation. The resulting factual and counterfactual attention maps capture complementary evidence: the former highlights regions supporting the prediction, while the latter reveals regions whose reweighting would challenge it. We evaluate our method on synthetic MIL benchmarks with instance-level ground truth enabling controlled analysis of attention behavior and on five digital pathology datasets across four tasks. CAR-MIL maintains competitive classification performance, with the largest gains observed on more challenging tasks, while improving attention reliability, demonstrating the benefits of integrating counterfactual explainability reasoning into attention learning.},
+  journal={European Conference on Computer Vision (ECCV)},
+  year={2026},
+  pdf={https://arxiv.org/abs/2609.08419},
+  code={https://github.com/ImaneCR/CAR-MIL/},
+}
+
 @inproceedings{chraki2026counterfactual,
   bibtex_show={true},
   abbr={MIDL},
@@ -52,6 +56,7 @@
   booktitle={Medical Imaging with Deep Learning (MIDL)},
   year={2026},
   pdf={https://openreview.net/pdf?id=s5qMD7LKEI},
+  code={https://github.com/ImaneCR/CAR-MIL/},
 }
 
 @inproceedings{belagali2026ticon,
