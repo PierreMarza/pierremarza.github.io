@@ -1,11 +1,26 @@
 ---
 ---
 
+@article{boutaj2026omni,
+  bibtex_show={true},
+  abbr={NeurIPS},
+  title={Scaling Multi-Teacher Distillation for Digital Pathology},
+  author={Boutaj*, Sofi{\`e}ne and Marza*, Pierre and Belagali, Varun and
+             Samaras, Dimitris and Vakalopoulou, Maria and Christodoulidis, Stergios},
+  abstract={Multi-teacher distillation allows transferring knowledge from multiple "teacher" networks to a single "student" network. This method is promising in fields such as digital pathology, where many powerful foundation models were proposed recently. However, as we show in this paper, the standard multi-teacher distillation approach reacts poorly to an increase in the number of teachers used to train a student encoder. We demonstrate that learning teacher-specific representations is a key to scaling in MTD. Importantly, different design choices, such as learnable teacher tokens, a tailored attention scheme, additional mixture-of-experts layers and a contrastive loss, are proposed to better learn such teacher-specific representations. We show that our method better scales with respect to the number of considered teachers, allowing us to train compact student encoders, up to 10x more efficient than larger teacher foundation models, while matching their performance and even outperforming them on a large set of tile-level and slide-level tasks. We conduct a thorough empirical validation, evaluating more than 10 foundation models on 39 tasks spanning tile and slide levels. As a result, we release a new collection of strong and efficient foundation models, named OMNI, trained from the knowledge of 10 state-of-the-art foundation models. We finally conduct an analysis of the learned teacher-specific representations, highlighting their complementarity and explaining why they can be easily aggregated at downstream time.},
+  journal={Neural Information Processing Systems (NeurIPS)},
+  year={2026},
+  pdf={https://arxiv.org/abs/2610.12574},
+  html={https://sofiene-boutaj.github.io/omni-projectpage/},
+  code={https://github.com/prism-oncology/omni},
+  selected={true}
+}
+
 @article{boutaj2026patches,
   bibtex_show={true},
   abbr={MICCAI (Early Accept)},
   title={From Patches to Patients: A study of the tile-to-slide performance transferability in Digital Pathology},
-  author={Boutaj, Sofi{\`e}ne and Fillioux, Leo and Vakalopoulou, Maria and Christodoulidis, Stergios and Marza, Pierre},
+  author={Boutaj, Sofi{\`e}ne and Fillioux, Leo and Vakalopoulou, Maria and Christodoulidis°, Stergios and Marza°, Pierre},
   abstract={Foundation Models (FMs) have recently redefined the state-of-the-art in histopathology by providing robust representations for whole-slide image (WSI) analysis. However, selecting the optimal foundation model (FM) for a specific clinical cohort currently requires multiple preprocessing steps, followed by computationally expensive feature extraction and the training of a Multiple Instance Learning (MIL) aggregator for every model. In this work, we investigate whether efficient tile-level linear probing can serve as a reliable proxy for slide-level performance, reducing the need to run full slide-level pipelines for every candidate encoder. We benchmark 19 state-of-the-art FMs on 42 slide-level and 16 tile-level tasks, comparing tile probing metrics against slide-level outcomes using ABMIL and Mean Pooling aggregations. We observe a high correlation between tile and slide performance across varying task difficulties, indicating that encoder representation quality is the primary determinant of WSI success. Sensitivity analyses show that transferability is stable across models and is more influenced by cohort sizes and numbers of tiles per slide than by average task difficulty. We also measure the agreement in best performing models between tile and slide-level tasks, showing tile benchmarks reliably shortlist strong candidates. Overall, our study indicates that tile-level benchmarking provides an efficient and practical first step for narrowing down candidate models, while slide-level evaluation remains essential for final validation on clinical tasks.},
   journal={Medical Image Computing and Computer-Assisted Intervention (MICCAI)},
   year={2026},
@@ -63,7 +78,7 @@
   bibtex_show={true},
   abbr={CVPR Findings},
   title={Ticon: A slide-level tile contextualizer for histopathology representation learning},
-  author={Belagali, Varun and Kapse, Saarthak and Marza, Pierre and Das, Srijan and Li, Zilinghan and Boutaj, Sofi{\`e}ne and Pati, Pushpak and Yellapragada, Srikar and Nandi, Tarak Nath and Madduri, Ravi K and others},
+  author={Belagali*, Varun and Kapse*, Saarthak and Marza°, Pierre and Das°, Srijan and Li, Zilinghan and Boutaj, Sofi{\`e}ne and Pati, Pushpak and Yellapragada, Srikar and Nandi, Tarak Nath and Madduri, Ravi K and others},
   abstract={The interpretation of small tiles in large whole slide images (WSI) often needs a larger image context. We introduce TICON, a transformer-based tile representation contextualizer that produces rich, contextualized embeddings for any application in computational pathology. Standard tile encoder-based pipelines, which extract embeddings of tiles stripped from their context, fail to model the rich slide-level information essential for both local and global tasks. Furthermore, different tile-encoders excel at different downstream tasks. Therefore, a unified model is needed to contextualize embeddings derived from any tile-level foundation model. TICON addresses this need with a single, shared encoder, pretrained using a masked modeling objective to simultaneously unify and contextualize representations from diverse tile-level pathology foundation models. Our experiments demonstrate that TICON-contextualized embeddings significantly improve performance across many different tasks, establishing new state-of-the-art results on tile-level benchmarks (i.e., HEST-Bench, THUNDER, CATCH) and slide-level benchmarks (i.e., Patho-Bench). Finally, we pretrain an aggregator on TICON to form a slide-level foundation model, using only 11K WSIs, outperforming SoTA slide-level foundation models pretrained with up to 350K WSIs.},
   booktitle={Computer Vision and Pattern Recognition (CVPR) Findings},
   year={2026},
