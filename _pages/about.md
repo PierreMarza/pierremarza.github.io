@@ -2,7 +2,7 @@
 layout: about
 title: About
 permalink: /
-description: <strong>Assistant Professor</strong> (Maître de Conférences) <br> Computer Vision, Deep Learning, Medical Imaging, Digital Pathology <br> <strong>CentraleSupélec</strong>, Université Paris-Saclay
+description: <strong>Assistant Professor</strong> (Maître de Conférences) <br> <strong>CentraleSupélec</strong>, Université Paris-Saclay <br> Computer Vision, Deep Learning, Medical Imaging, Digital Pathology
 
 profile:
   align: right
